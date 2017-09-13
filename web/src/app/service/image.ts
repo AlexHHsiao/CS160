@@ -1,4 +1,4 @@
-export class Upload {
+export class Image {
 
   $key: string;
   file: File;

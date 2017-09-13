@@ -8,6 +8,7 @@ import {ServerService} from './service/server.service';
 import {HttpModule} from '@angular/http';
 import { UploadListComponent } from './upload/upload-list/upload-list.component';
 import { UploadFormComponent } from './upload/upload-form/upload-form.component';
+import { UploadDetailComponent } from './upload/upload-detail/upload-detail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { UploadFormComponent } from './upload/upload-form/upload-form.component'
     HeaderComponent,
     MainComponent,
     UploadListComponent,
-    UploadFormComponent
+    UploadFormComponent,
+    UploadDetailComponent
   ],
   imports: [
     BrowserModule,

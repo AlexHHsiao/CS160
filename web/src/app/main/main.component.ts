@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ServerService} from '../service/server.service';
 
 @Component({
   selector: 'app-main',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
   private reader: FileReader;
 
-  constructor() { }
+  constructor(private serverService: ServerService) { }
 
   ngOnInit() {
   }
 
+  upload() {
+    //this.serverService.storeData();
+  }
 }

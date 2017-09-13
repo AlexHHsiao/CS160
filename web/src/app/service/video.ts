@@ -1,4 +1,4 @@
-export class Upload {
+export class Video {
 
   $key: string;
   file: File;
