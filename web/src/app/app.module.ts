@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import {ServerService} from './service/server.service';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     FileUploadComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
