@@ -1,15 +1,23 @@
-import { Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {Video} from './video';
+import {AuthService} from './auth.service';
 
 @Injectable()
 
 export class ServerService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private authService: AuthService) {
   }
 
-  storeData(data: Video) {
-    this.http.put('gs://sjsu-cs-160.appspot.com/video-test', data);
+  storeUsername() {
+    return this.http.post('https://sjsu-cs-160.firebaseio.com/username.json', this.authService.username);
+  }
+
+  checkUsername() {
+
+  }
+
+  getUsername() {
+    const token = this.authService.getToken();
   }
 }
