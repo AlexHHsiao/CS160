@@ -12,6 +12,8 @@ import { UploadDetailComponent } from './upload/upload-detail/upload-detail.comp
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {RouterModule, Routes} from '@angular/router';
+import {AuthService} from './service/auth.service';
+import {FormsModule} from '@angular/forms';
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -31,11 +33,12 @@ const router: Routes = [
     SigninComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(router)
   ],
-  providers: [ServerService],
+  providers: [ServerService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
