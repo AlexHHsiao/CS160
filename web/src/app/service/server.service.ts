@@ -10,6 +10,7 @@ export class ServerService {
   }
 
   storeUsername() {
+    //const token = this.authService.getToken();
     return this.http.post('https://sjsu-cs-160.firebaseio.com/username.json', this.authService.username);
   }
 

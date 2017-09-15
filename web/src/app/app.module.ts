@@ -14,11 +14,13 @@ import { SigninComponent } from './auth/signin/signin.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthService} from './service/auth.service';
 import {FormsModule} from '@angular/forms';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const router: Routes = [
   {path: '', component: MainComponent},
   {path: 'signin', component: SigninComponent},
-  {path: 'signup', component: SignupComponent}
+  {path: 'signup', component: SignupComponent},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -30,7 +32,8 @@ const router: Routes = [
     UploadFormComponent,
     UploadDetailComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    PageNotFoundComponent
   ],
   imports: [
     FormsModule,

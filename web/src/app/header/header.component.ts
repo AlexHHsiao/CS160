@@ -20,4 +20,8 @@ export class HeaderComponent implements OnInit {
   signin() {
     this.router.navigateByUrl('/signin');
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }

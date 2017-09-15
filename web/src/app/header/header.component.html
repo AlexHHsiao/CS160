@@ -6,11 +6,13 @@
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-      <li><button class="btn-primary btn" (click)="register()">Register</button></li>
-      <li><button class="btn-primary btn" (click)="signin()">Sign In</button></li>
-      <ng-template *ngIf="!authService.isAuth()">
-        <li><button class="btn-primary btn">Log Out</button></li>
+      <ng-template [ngIf]="!authService.isAuth()">
+        <li><button class="btn-primary btn" (click)="register()">Register</button></li>
+        <li><button class="btn-primary btn" (click)="signin()">Sign In</button></li>
       </ng-template>
+
+      <li *ngIf="authService.isAuth()"><button class="btn-primary btn" (click)="logout()">Log Out</button></li>
+
     </ul>
   </div>
 </div>
