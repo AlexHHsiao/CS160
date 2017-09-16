@@ -5,15 +5,18 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class AuthService {
   token: string;
-  username: string;
+  userCreated: boolean;
 
   constructor(private router: Router) {
+    this.userCreated = false;
   }
 
-  signupUser(username: string, email: string, password: string) {
-    this.username = username;
-
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(
+  signupUser(email: string, password: string) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(
+      response => {
+        this.userCreated = true;
+      }
+    ).catch(
       error => console.log(error)
     );
   }
@@ -21,6 +24,7 @@ export class AuthService {
   signinUser(email: string, password: string) {
     firebase.auth().signInWithEmailAndPassword(email, password).then(
       response => {
+        console.log('+++', firebase.auth().currentUser.uid);
         this.router.navigate(['']);
         firebase.auth().currentUser.getToken().then(
           (token: string) => this.token = token

@@ -5,11 +5,17 @@ import {AuthService} from '../../service/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  username: string;
+  openModal: boolean;
+
+  constructor(private authService: AuthService) {
+    this.openModal = false;
+    this.username = 'no name';
+  }
 
   ngOnInit() {
   }
@@ -17,8 +23,12 @@ export class SignupComponent implements OnInit {
   onSignup(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    const username = form.value.username;
 
-    this.authService.signupUser(username, email, password);
+    this.openModal = true;
+    //this.authService.signupUser(email, password);
+  }
+
+  createUsername() {
+    this.openModal = false;
   }
 }

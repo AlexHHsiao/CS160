@@ -9,6 +9,7 @@
   box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
   top: 0;
   margin-bottom: 20px;
+  min-width: 800px;
 }
 
 .navbar-content {
@@ -28,3 +29,7 @@ ul {
     padding-top: 20px;
   }
 }
+/*
+.navbar-header {
+  float: left;
+}*/

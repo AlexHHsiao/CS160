@@ -9,9 +9,9 @@ export class ServerService {
   constructor(private http: Http, private authService: AuthService) {
   }
 
-  storeUsername() {
+  storeUser(user: any) {
     //const token = this.authService.getToken();
-    return this.http.post('https://sjsu-cs-160.firebaseio.com/username.json', this.authService.username);
+    return this.http.post('https://sjsu-cs-160.firebaseio.com/user.json', [{name: 'aaaa', id: 4444}]);
   }
 
   checkUsername() {

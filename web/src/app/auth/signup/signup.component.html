@@ -3,12 +3,6 @@
     <form (ngSubmit)="onSignup(f)" #f="ngForm">
 
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" ngModel class="form-control">
-      </div>
-
-
-      <div class="form-group">
         <label for="email">Mail</label>
         <input type="email" id="email" name="email" ngModel class="form-control">
       </div>
@@ -22,6 +16,22 @@
     </form>
   </div>
 </div>
+
+<div *ngIf='openModal' class='name-modal'>
+  <div class="name-box">
+    <div class="modal-header">
+      <span class="text-info">Please Give us Your Name</span>
+    </div>
+
+    <input type="text" name="username" class="form-control" [(ngModel)]="username">
+
+    <div class="btn-list">
+      <button class="btn btn-danger" (click)="openModal = false">Cancel</button>
+      <button class="btn btn-primary" (click)="createUsername()" [disabled]="username === ''">Submit</button>
+    </div>
+  </div>
+</div>
+
 
 
 
