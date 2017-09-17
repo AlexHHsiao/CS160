@@ -9,7 +9,13 @@ import {AuthService} from '../service/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  nameChange: boolean;
+  username: string;
+
+  constructor(private router: Router, private authService: AuthService) {
+    this.nameChange = false;
+    this.username = '';
+  }
 
   ngOnInit() {
   }
@@ -23,5 +29,10 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  changeUsername() {
+    this.nameChange = false;
+    this.authService.changeUsername(this.username);
   }
 }

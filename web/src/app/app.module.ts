@@ -15,6 +15,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthService} from './service/auth.service';
 import {FormsModule} from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {DropdownDirective} from './shared/dropdown.directive';
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -33,7 +34,8 @@ const router: Routes = [
     UploadDetailComponent,
     SignupComponent,
     SigninComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DropdownDirective
   ],
   imports: [
     FormsModule,

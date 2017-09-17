@@ -1,5 +1,28 @@
-<label for='upload'>Upload Here!!</label>
-<input id='upload' type="file" accept=".jpg, .jpeg, .png" (change)="preview()" #image_input name="img">
-<br>
-<button class="btn btn-primary" (click)="upload()">Upload</button>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <div class="title">
+      <p>
+        Welcome to WTF is this
+      </p>
+    </div>
 
+    <div>
+      <div class="title">
+        <p *ngIf="!authService.isAuth()">
+            Please Sign In to Get Access
+        </p>
+
+        <p *ngIf="authService.isAuth()">
+          Welcome back {{authService.getUsername()}}
+        </p>
+      </div>
+    </div>
+
+    <ng-template [ngIf]="authService.isAuth()">
+      <label for='upload'>Upload Here!!</label>
+      <input id='upload' type="file" accept=".jpg, .jpeg, .png" (change)="preview()" #image_input name="img">
+      <br>
+      <button class="btn btn-primary" (click)="upload()">Upload</button>
+    </ng-template>
+  </div>
+</div>

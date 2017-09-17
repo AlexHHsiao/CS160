@@ -4,34 +4,56 @@
 
       <div class="form-group">
         <label for="email">Mail</label>
-        <input type="email" id="email" name="email" ngModel class="form-control">
+        <input type="email" id="email" name="email" ngModel class="form-control" required email #email="ngModel">
       </div>
+      <span class="help-block" *ngIf="!email.valid && email.touched"
+            style="background-color: red; color: white; text-align: center; border-radius: 5px;">
+        Please Enter a Valid Email!
+      </span>
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" ngModel class="form-control">
+        <input type="password" id="password" name="password" ngModel class="form-control" #password="ngModel" required>
       </div>
+      <span class="help-block" *ngIf="!password.valid && password.touched"
+            style="background-color: red; color: white; text-align: center; border-radius: 5px;">
+        Please Enter a Valid Password!
+      </span>
 
-      <button class="btn btn-primary" type="submit">Sign Up</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign Up</button>
+      <span class="help-block" *ngIf="authService.errorMsg !== null"
+            style="background-color: cornflowerblue; color: white; text-align: center; border-radius: 5px;">
+        {{authService.errorMsg}}
+      </span>
+
+      <div class="form-group" *ngIf="!authService.userCreated">
+        <div class="row">
+        </div>
+      </div>
     </form>
   </div>
 </div>
 
-<div *ngIf='openModal' class='name-modal'>
+<div *ngIf='openModal && authService.userCreated' class='name-modal'>
   <div class="name-box">
-    <div class="modal-header">
-      <span class="text-info">Please Give us Your Name</span>
-    </div>
+    <ng-template [ngIf]="!usernameFinish">
+      <div class="modal-header">
+        <span class="text-info">Please Give us Your Name</span>
+      </div>
 
-    <input type="text" name="username" class="form-control" [(ngModel)]="username">
+      <input type="text" name="username" class="form-control" [(ngModel)]="username">
 
-    <div class="btn-list">
-      <button class="btn btn-danger" (click)="openModal = false">Cancel</button>
-      <button class="btn btn-primary" (click)="createUsername()" [disabled]="username === ''">Submit</button>
-    </div>
+      <div class="btn-list">
+        <button class="btn btn-danger" (click)="createUsername(); username='No Name'">Cancel</button>
+        <button class="btn btn-primary" (click)="createUsername()" [disabled]="username === ''">Submit</button>
+      </div>
+    </ng-template>
+
+    <ng-template [ngIf]="usernameFinish">
+      <div class="btn-list">
+        <button class="btn btn-primary" (click)="gotoSignin();" style="float: none; margin-left: 110px;">Go To Sign In</button>
+      </div>
+
+    </ng-template>
   </div>
 </div>
-
-
-
-
