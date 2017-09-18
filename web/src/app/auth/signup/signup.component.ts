@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   openModal: boolean;
   usernameFinish: boolean;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(public authService: AuthService, private router: Router) {
     this.openModal = false;
     this.username = 'No Name';
     this.usernameFinish = false;

@@ -10,7 +10,7 @@ import {AuthService} from '../service/auth.service';
 export class MainComponent implements OnInit {
   private reader: FileReader;
 
-  constructor(private serverService: ServerService, private authService: AuthService) {
+  constructor(private serverService: ServerService, public authService: AuthService) {
   }
 
   ngOnInit() {

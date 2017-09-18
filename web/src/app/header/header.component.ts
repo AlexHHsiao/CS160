@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   nameChange: boolean;
   username: string;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, public authService: AuthService) {
     this.nameChange = false;
     this.username = '';
   }
