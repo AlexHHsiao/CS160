@@ -21,10 +21,11 @@
       </span>
 
       <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign In</button>
-      <div class="form-group" *ngIf="!authService.userCreated">
-        <div class="row">
-        </div>
-      </div>
+      <span class="help-block" *ngIf="authService.errorMsg !== ''"
+            style="background-color: cornflowerblue; color: white; text-align: center; border-radius: 5px;">
+        {{authService.errorMsg}}
+      </span>
+      
     </form>
   </div>
 </div>

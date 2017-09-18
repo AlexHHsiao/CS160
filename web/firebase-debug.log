@@ -1,0 +1,29 @@
+[debug] [2017-09-18T06:38:32.497Z] ----------------------------------------------------------------------
+[debug] [2017-09-18T06:38:32.498Z] Command:       c:\Program Files\nodejs\node.exe c:\Users\alexh\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-09-18T06:38:32.498Z] CLI Version:   3.11.0
+[debug] [2017-09-18T06:38:32.498Z] Platform:      win32
+[debug] [2017-09-18T06:38:32.498Z] Node Version:  v8.1.4
+[debug] [2017-09-18T06:38:32.499Z] Time:          Sun Sep 17 2017 23:38:32 GMT-0700 (太平洋夏令时)
+[debug] [2017-09-18T06:38:32.499Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-18T06:38:32.508Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-18T06:38:32.508Z] > authorizing via signed-in user
+[debug] [2017-09-18T06:38:32.509Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/sjsu-cs-160  
+ Sun Sep 17 2017 23:38:32 GMT-0700 (太平洋夏令时)
+[debug] [2017-09-18T06:38:33.027Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-18T06:38:33.027Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/sjsu-cs-160/tokens  
+ Sun Sep 17 2017 23:38:33 GMT-0700 (太平洋夏令时)
+[debug] [2017-09-18T06:38:33.488Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'g:\GitHub\CS160\web'...
+[info] 
+[debug] [2017-09-18T06:38:33.490Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/sjsu-cs-160  
+ Sun Sep 17 2017 23:38:33 GMT-0700 (太平洋夏令时)
+[debug] [2017-09-18T06:38:33.894Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-18T06:38:33.895Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/126660119383/clients/_:getWebAppConfig  
+ Sun Sep 17 2017 23:38:33 GMT-0700 (太平洋夏令时)
+[debug] [2017-09-18T06:38:34.370Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: src
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] Shutting down...
