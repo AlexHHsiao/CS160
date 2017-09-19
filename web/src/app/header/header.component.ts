@@ -34,5 +34,6 @@ export class HeaderComponent implements OnInit {
   changeUsername() {
     this.nameChange = false;
     this.authService.changeUsername(this.username);
+    this.username = '';
   }
 }

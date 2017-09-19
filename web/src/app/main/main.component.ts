@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
   private reader: FileReader;
 
   constructor(private serverService: ServerService, public authService: AuthService) {
+    this.serverService.testing();
   }
 
   ngOnInit() {

@@ -21,4 +21,12 @@ export class ServerService {
   getUsername() {
     const token = this.authService.getToken();
   }
+
+  testing() {
+    // this.http.get('https://us-central1-sjsu-cs-160.cloudfunctions.net/helloWorld').subscribe(
+    //   (data) => console.log(data)
+    // );
+
+    console.log(this.http.get('https://us-central1-sjsu-cs-160.cloudfunctions.net/helloWorld'));
+  }
 }
