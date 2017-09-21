@@ -13,11 +13,15 @@ import {AuthService} from './service/auth.service';
 import {FormsModule} from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {DropdownDirective} from './shared/dropdown.directive';
+import { InformationComponent } from './information/information.component';
+import { UploadComponent } from './upload/upload.component';
+import {UploadService} from "./service/upload.service";
 
 const router: Routes = [
   {path: '', component: MainComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'information', component: InformationComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -29,7 +33,9 @@ const router: Routes = [
     SignupComponent,
     SigninComponent,
     PageNotFoundComponent,
-    DropdownDirective
+    DropdownDirective,
+    InformationComponent,
+    UploadComponent
   ],
   imports: [
     FormsModule,
@@ -37,7 +43,7 @@ const router: Routes = [
     HttpModule,
     RouterModule.forRoot(router)
   ],
-  providers: [ServerService, AuthService],
+  providers: [ServerService, AuthService, UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

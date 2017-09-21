@@ -24,7 +24,9 @@ export class ServerService {
 
   testing() {
     // this.http.get('https://us-central1-sjsu-cs-160.cloudfunctions.net/helloWorld').subscribe(
-    //   (data) => console.log(data)
+    //   data => {
+    //     console.log(data.text());
+    //   }
     // );
 
     console.log(this.http.get('https://us-central1-sjsu-cs-160.cloudfunctions.net/helloWorld'));

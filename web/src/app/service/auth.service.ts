@@ -78,6 +78,10 @@ export class AuthService {
     return firebase.auth().currentUser.displayName;
   }
 
+  getUserProfile() {
+    return firebase.auth().currentUser.photoURL;
+  }
+
   changeUsername(username: string) {
     firebase.auth().currentUser.updateProfile({displayName: username, photoURL: ''}).catch(
       (error) => console.log(error)

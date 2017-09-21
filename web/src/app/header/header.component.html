@@ -11,7 +11,7 @@
         <li class="header-btn-li"><button class="btn-primary btn" (click)="signin()">Sign In</button></li>
       </ng-template>
 
-      <li class="profile" *ngIf="authService.isAuth()"><img src="./../../assets/img/profile-img.jpg"></li>
+      <li class="profile" *ngIf="authService.isAuth()"><img src="{{profileUrl}}"></li>
 
       <li class="dropdown" appDropdown *ngIf="authService.isAuth()" style="height: 100%">
         <a style="cursor: pointer; line-height: 40px; font-size: x-large;" class="dropdown-toggle" role="button">{{authService.getUsername()}}

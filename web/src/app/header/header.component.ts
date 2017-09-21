@@ -11,10 +11,13 @@ export class HeaderComponent implements OnInit {
 
   nameChange: boolean;
   username: string;
+  profileUrl: string;
 
   constructor(private router: Router, public authService: AuthService) {
     this.nameChange = false;
     this.username = '';
+    this.profileUrl = 'https://firebasestorage.googleapis.com/v0/b/sjsu-cs-160.' +
+      'appspot.com/o/profile-img%2Fprofile-img.jpg?alt=media&token=5a3481f2-87bf-460a-bb04-ccb1ea98949a';
   }
 
   ngOnInit() {
