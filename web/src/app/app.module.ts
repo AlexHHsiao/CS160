@@ -15,7 +15,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {DropdownDirective} from './shared/dropdown.directive';
 import { InformationComponent } from './information/information.component';
 import { UploadComponent } from './upload/upload.component';
-import {UploadService} from "./service/upload.service";
+import {UploadService} from './service/upload.service';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../environments/environment';
+import * as firebase from 'firebase';
+
+firebase.initializeApp(environment.firebase);
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -41,7 +47,9 @@ const router: Routes = [
     FormsModule,
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(router)
+    RouterModule.forRoot(router),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [ServerService, AuthService, UploadService],
   bootstrap: [AppComponent]

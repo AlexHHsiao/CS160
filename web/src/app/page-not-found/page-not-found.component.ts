@@ -12,4 +12,7 @@ export class PageNotFoundComponent implements OnInit {
   ngOnInit() {
   }
 
+  goBack() {
+    window.history.back();
+  }
 }

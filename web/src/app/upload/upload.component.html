@@ -1,6 +1,26 @@
-<div>
+<div style="margin-top: 10px;">
   <h2>Please Upload Video Here!!</h2>
-  <input type="file" (change)="handleFile()">
 
-  <button class="btn btn-primary" (click)="onUpload()">Upload</button>
+  <div *ngIf="upload">
+    <div class="progress">
+      <div class="progress-bar progress-bar-animated active"
+           [ngStyle]="{ 'width': upload?.progress + '%' }">{{upload?.progress}} %</div>
+    </div>
+
+    <div *ngIf="upload?.progress === 100">
+      Upload Completed!!!
+    </div>
+
+  </div>
+
+  <form>
+    <label for="file-upload" class="custom-file-upload" (change)="handleFile($event)">
+      {{uploadTitle}}
+    </label>
+    <input id="file-upload" name='upload_cont_img' type="file" style="display:none;" (change)="handleFile($event)">
+  </form>
+
+  <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file">Upload</button>
+
 </div>
+

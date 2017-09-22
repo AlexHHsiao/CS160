@@ -1,6 +1,7 @@
 export class UploadModel {
   $key: string;
   file: File;
+  name: string;
   url: string;
   progress: number;
   createdOn: Date = new Date();

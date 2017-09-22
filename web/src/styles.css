@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -3627,11 +3628,13 @@ tbody.collapse.in {
   bottom: 100%;
   margin-bottom: 2px;
 }
+.navbar-right .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
 @media (min-width: 768px) {
-  .navbar-right .dropdown-menu {
-    right: 0;
-    left: auto;
-  }
+
   .navbar-right .dropdown-menu-left {
     right: auto;
     left: 0;
@@ -4169,11 +4172,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-radius: 4px;
   }
 }
-@media (min-width: 768px) {
-  .navbar-header {
-    float: left;
-  }
+
+.navbar-header {
+  float: left;
 }
+
 .navbar-collapse {
   padding-right: 15px;
   padding-left: 15px;
@@ -4323,7 +4326,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-bottom: 10px;
   line-height: 20px;
 }
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
     position: static;
     float: none;
@@ -4345,20 +4348,20 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav .open .dropdown-menu > li > a:focus {
     background-image: none;
   }
+}*/
+
+.navbar-nav {
+  float: left;
+  margin: 0;
 }
-@media (min-width: 768px) {
-  .navbar-nav {
-    float: left;
-    margin: 0;
-  }
-  .navbar-nav > li {
-    float: left;
-  }
-  .navbar-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
+.navbar-nav > li {
+  float: left;
 }
+.navbar-nav > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .navbar-form {
   padding: 10px 15px;
   margin-top: 8px;
@@ -4476,14 +4479,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-left: 15px;
   }
 }
+
+.navbar-right {
+  float: right !important;
+  margin-right: -15px;
+}
+
 @media (min-width: 768px) {
   .navbar-left {
     float: left !important;
   }
-  .navbar-right {
-    float: right !important;
-    margin-right: -15px;
-  }
+
   .navbar-right ~ .navbar-right {
     margin-right: 0;
   }
