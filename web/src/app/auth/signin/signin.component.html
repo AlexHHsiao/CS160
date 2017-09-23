@@ -21,9 +21,9 @@
       </span>
 
       <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign In</button>
-      <span class="help-block" *ngIf="authService.errorMsg !== ''"
+      <span class="help-block" *ngIf="authService.errorMsgSign !== ''"
             style="background-color: cornflowerblue; color: white; text-align: center; border-radius: 5px;">
-        {{authService.errorMsg}}
+        {{authService.errorMsgSign}}
       </span>
 
     </form>

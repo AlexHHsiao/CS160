@@ -4,14 +4,10 @@
   },
   "hosting": {
     "public": "dist",
-//    "ignore": [
-//      "firebase.json",
-//      "**/.*",
-//      "**/node_modules/**"
-//    ]
-    "rewrites": [{
-      "sourse": "**",
-      "function": "helloWorld"
-    }]
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
   }
 }

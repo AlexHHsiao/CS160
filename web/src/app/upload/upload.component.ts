@@ -19,10 +19,11 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.uploadService.setPath('/video-org');
   }
 
   onUpload() {
+    this.uploadService.setPath('/video-org');
+
     const fileToUpload = this.file;
     const fileIndex = _.range(fileToUpload.length);
     _.each(fileIndex, (idx) => {

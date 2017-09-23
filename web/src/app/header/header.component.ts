@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
+import {UploadService} from '../service/upload.service';
+import {UploadModel} from '../model/upload.model';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-header',
@@ -11,13 +14,16 @@ export class HeaderComponent implements OnInit {
 
   nameChange: boolean;
   username: string;
-  profileUrl: string;
+  proImgChange: boolean;
+  upload: UploadModel;
+  file: FileList;
+  uploadTitle: string;
 
-  constructor(private router: Router, public authService: AuthService) {
+  constructor(private router: Router, public authService: AuthService, public uploadService: UploadService) {
     this.nameChange = false;
     this.username = '';
-    this.profileUrl = 'https://firebasestorage.googleapis.com/v0/b/sjsu-cs-160.' +
-      'appspot.com/o/profile-img%2Fprofile-img.jpg?alt=media&token=5a3481f2-87bf-460a-bb04-ccb1ea98949a';
+    this.proImgChange = false;
+    this.uploadTitle = 'Upload Profile Photo';
   }
 
   ngOnInit() {
@@ -38,5 +44,23 @@ export class HeaderComponent implements OnInit {
     this.nameChange = false;
     this.authService.changeUsername(this.username);
     this.username = '';
+  }
+
+  onUpload() {
+    this.uploadService.setPath('/profile-img');
+
+    const fileToUpload = this.file;
+    const fileIndex = _.range(fileToUpload.length);
+    _.each(fileIndex, (idx) => {
+      this.upload = new UploadModel(fileToUpload[idx]);
+      this.uploadService.uploadFile(this.upload, 'user');
+    });
+
+    this.uploadTitle = 'Upload Profile Photo';
+  }
+
+  handleFile(event) {
+    this.file = event.target.files;
+    this.uploadTitle = event.target.files[0].name;
   }
 }

@@ -21,6 +21,7 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.errorMsgReg = '';
   }
 
   onSignup(form: NgForm) {

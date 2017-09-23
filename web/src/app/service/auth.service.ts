@@ -6,12 +6,14 @@ import {Injectable} from '@angular/core';
 export class AuthService {
   token: string;
   userCreated: boolean;
-  errorMsg: string;
+  errorMsgReg: string;
+  errorMsgSign: string;
   nameChange: boolean;
 
   constructor(private router: Router) {
     this.userCreated = false;
-    this.errorMsg = '';
+    this.errorMsgReg = '';
+    this.errorMsgSign = '';
     this.nameChange = false;
   }
 
@@ -19,16 +21,17 @@ export class AuthService {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(
       response => {
         this.userCreated = true;
-        this.errorMsg = '';
+        this.errorMsgReg = '';
 
-        firebase.auth().currentUser.updateProfile({displayName: 'No Name', photoURL: ''}).catch(
+        firebase.auth().currentUser.updateProfile({displayName: 'No Name', photoURL: 'https://firebasestorage.googleapis.com/v0' +
+        '/b/sjsu-cs-160.appspot.com/o/profile-img%2Fprofile-img.jpg?alt=media&token=5a3481f2-87bf-460a-bb04-ccb1ea98949a'}).catch(
           (error) => console.log(error)
         );
       }
     ).catch(
       (error) => {
         console.log(error);
-        this.errorMsg = error.message;
+        this.errorMsgReg = error.message;
         this.userCreated = false;
       }
     );
@@ -37,7 +40,7 @@ export class AuthService {
   signinUser(email: string, password: string) {
     firebase.auth().signInWithEmailAndPassword(email, password).then(
       response => {
-        this.errorMsg = '';
+        this.errorMsgSign = '';
         this.router.navigate(['']);
         firebase.auth().currentUser.getToken().then(
           (token: string) => this.token = token
@@ -46,13 +49,14 @@ export class AuthService {
     ).catch(
       (error) => {
         console.log(error);
-        this.errorMsg = error.message;
+        this.errorMsgSign = error.message;
       }
     );
   }
 
   assignUsername(username: string) {
-    firebase.auth().currentUser.updateProfile({displayName: username, photoURL: ''}).catch(
+    firebase.auth().currentUser.updateProfile({displayName: username, photoURL: 'https://firebasestorage.googleapis.com/v0/b/sjsu-cs-160.' +
+    'appspot.com/o/profile-img%2Fprofile-img.jpg?alt=media&token=5a3481f2-87bf-460a-bb04-ccb1ea98949a'}).catch(
       (error) => console.log(error)
     );
   }
@@ -78,12 +82,34 @@ export class AuthService {
     return firebase.auth().currentUser.displayName;
   }
 
+  getPhoto() {
+    return firebase.auth().currentUser.photoURL;
+  }
+
   getUserProfile() {
     return firebase.auth().currentUser.photoURL;
   }
 
+  getPhotoName() {
+    return firebase.auth().currentUser.email;
+  }
+
   changeUsername(username: string) {
-    firebase.auth().currentUser.updateProfile({displayName: username, photoURL: ''}).catch(
+    const photoUrl = firebase.auth().currentUser.photoURL;
+
+    firebase.auth().currentUser.updateProfile({displayName: username, photoURL: photoUrl}).catch(
+      (error) => console.log(error)
+    );
+  }
+
+  changePhoto(photo: string, fileName: string) {
+    const username = firebase.auth().currentUser.displayName;
+
+    firebase.auth().currentUser.updateProfile({displayName: username, photoURL: photo}).catch(
+      (error) => console.log(error)
+    );
+
+    firebase.auth().currentUser.updateEmail(fileName).catch(
       (error) => console.log(error)
     );
   }

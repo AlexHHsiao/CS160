@@ -29,6 +29,6 @@ export class ServerService {
     //   }
     // );
 
-    console.log(this.http.get('https://us-central1-sjsu-cs-160.cloudfunctions.net/helloWorld'));
+    /*console.log(this.http.get('https://us-central1-sjsu-cs-160.cloudfunctions.net/helloWorld'));*/
   }
 }
