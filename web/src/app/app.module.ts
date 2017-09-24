@@ -20,6 +20,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import * as firebase from 'firebase';
+import { FooterComponent } from './footer/footer.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -41,7 +42,8 @@ const router: Routes = [
     PageNotFoundComponent,
     DropdownDirective,
     InformationComponent,
-    UploadComponent
+    UploadComponent,
+    FooterComponent
   ],
   imports: [
     FormsModule,
