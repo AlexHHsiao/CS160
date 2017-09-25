@@ -34,18 +34,19 @@ export class UploadService {
         upload.url = uploadTask.snapshot.downloadURL;
         upload.name = upload.file.name;
         upload.email = this.authService.getEmail();
-        this.saveFileData(upload);
 
         if (user) {
           if (this.authService.getPhoto() === 'https://firebasestorage.googleapis.com/v0/b/sjsu-cs-160.' +
             'appspot.com/o/profile-img%2Fprofile-img.jpg?alt=media&token=5a3481f2-87bf-460a-bb04-ccb1ea98949a') {
-            this.authService.changePhoto(upload.url, upload.name);
+            this.authService.changePhoto(upload.url);
           } else {
-            /*            const deleteTask = storageRef.child(`${this.basePath}/${this.authService.getPhotoName()}`).delete().then(
-                          () => console.log('delete successfully')
-                        );*/
-            this.authService.changePhoto(upload.url, upload.name);
+           /* const deleteTask = storageRef.child(`${this.basePath}/${this.authService.getEmail()}` + '.png').delete().then(
+              () => console.log('delete successfully')
+            );*/
+            this.authService.changePhoto(upload.url);
           }
+        } else {
+          this.saveFileData(upload);
         }
       }
     );

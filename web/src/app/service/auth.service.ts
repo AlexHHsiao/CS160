@@ -86,10 +86,6 @@ export class AuthService {
     return firebase.auth().currentUser.photoURL;
   }
 
-  getUserProfile() {
-    return firebase.auth().currentUser.photoURL;
-  }
-
   getEmail() {
     return firebase.auth().currentUser.email;
   }
@@ -102,14 +98,10 @@ export class AuthService {
     );
   }
 
-  changePhoto(photo: string, fileName: string) {
+  changePhoto(photo: string) {
     const username = firebase.auth().currentUser.displayName;
 
     firebase.auth().currentUser.updateProfile({displayName: username, photoURL: photo}).catch(
-      (error) => console.log(error)
-    );
-
-    firebase.auth().currentUser.updateEmail(fileName).catch(
       (error) => console.log(error)
     );
   }
