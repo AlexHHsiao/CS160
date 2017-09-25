@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {UploadModel} from '../model/upload.model';
 import {AngularFireModule} from 'angularfire2';
 import * as firebase from 'firebase';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 import {AuthService} from './auth.service';
 
 @Injectable()
@@ -33,6 +33,7 @@ export class UploadService {
       (): any => {
         upload.url = uploadTask.snapshot.downloadURL;
         upload.name = upload.file.name;
+        upload.email = this.authService.getEmail();
         this.saveFileData(upload);
 
         if (user) {
@@ -40,9 +41,9 @@ export class UploadService {
             'appspot.com/o/profile-img%2Fprofile-img.jpg?alt=media&token=5a3481f2-87bf-460a-bb04-ccb1ea98949a') {
             this.authService.changePhoto(upload.url, upload.name);
           } else {
-/*            const deleteTask = storageRef.child(`${this.basePath}/${this.authService.getPhotoName()}`).delete().then(
-              () => console.log('delete successfully')
-            );*/
+            /*            const deleteTask = storageRef.child(`${this.basePath}/${this.authService.getPhotoName()}`).delete().then(
+                          () => console.log('delete successfully')
+                        );*/
             this.authService.changePhoto(upload.url, upload.name);
           }
         }
@@ -50,10 +51,8 @@ export class UploadService {
     );
   }
 
-
-
   private saveFileData(upload: UploadModel) {
-/*    this.db.list(`${this.basePath}/`).push(upload);
-    console.log('File saved!: ' + upload.url);*/
+    this.db.list(`${this.basePath}/`).push(upload);
+    console.log('File saved!: ' + upload.url);
   }
 }

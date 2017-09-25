@@ -90,7 +90,7 @@ export class AuthService {
     return firebase.auth().currentUser.photoURL;
   }
 
-  getPhotoName() {
+  getEmail() {
     return firebase.auth().currentUser.email;
   }
 

@@ -4,6 +4,7 @@ export class UploadModel {
   name: string;
   url: string;
   progress: number;
+  email: string;
   createdOn: Date = new Date();
 
   constructor(file: File) {
