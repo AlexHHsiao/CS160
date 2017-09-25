@@ -45,8 +45,8 @@ export class UploadComponent implements OnInit {
     xhr.onload = () => {
 
       console.log(xhr);
-/*      imageType(new Uint8Array(this.response));
-      //=> {ext: 'png', mime: 'image/png'}*/
+      //fileType(new Uint8Array(this.response));
+      //=> {ext: 'png', mime: 'image/png'}
     };
 
 
