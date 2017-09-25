@@ -40,9 +40,17 @@ export class UploadService {
             'appspot.com/o/profile-img%2Fprofile-img.jpg?alt=media&token=5a3481f2-87bf-460a-bb04-ccb1ea98949a') {
             this.authService.changePhoto(upload.url);
           } else {
-           /* const deleteTask = storageRef.child(`${this.basePath}/${this.authService.getEmail()}` + '.png').delete().then(
-              () => console.log('delete successfully')
-            );*/
+/*            const deleteTask = storageRef.child(`${this.basePath}/${this.authService.getEmail()}` + '.' + this.getImgType(this.authService.getPhoto()))
+              .delete().then(
+              () => {
+                console.log('delete successfully');
+              }
+            );
+
+            setTimeout(() => {
+              this.authService.changePhoto(upload.url);
+            }, 4000);*/
+
             this.authService.changePhoto(upload.url);
           }
         } else {
@@ -54,6 +62,19 @@ export class UploadService {
 
   private saveFileData(upload: UploadModel) {
     this.db.list(`${this.basePath}/`).push(upload);
+    this.db.object(`${this.basePath}/`).subscribe(
+      data => {
+        console.log(JSON.stringify(data));
+      }
+    );
     console.log('File saved!: ' + upload.url);
+  }
+
+  private getImgType(url: string) {
+    if (url.includes('png')) {
+      return 'png';
+    } else if (url.includes('jpeg')) {
+      return 'jpeg';
+    }
   }
 }
