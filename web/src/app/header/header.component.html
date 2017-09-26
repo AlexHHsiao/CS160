@@ -18,7 +18,7 @@
       <li class="profile" *ngIf="authService.isAuth()"><img [src]="authService.getPhoto()"></li>
 
       <li class="dropdown" appDropdown *ngIf="authService.isAuth()" style="height: 100%">
-        <a style="cursor: pointer; line-height: 40px; font-size: x-large;" class="dropdown-toggle" role="button">{{authService.getUsername()}}
+        <a style="cursor: pointer; line-height: 40px; font-size: x-large;" class="dropdown-toggle" role="button">{{authService.getUsername()| shorten: 10}}
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">

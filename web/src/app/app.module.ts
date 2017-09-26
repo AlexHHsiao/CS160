@@ -21,6 +21,7 @@ import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import * as firebase from 'firebase';
 import { FooterComponent } from './footer/footer.component';
+import {ShortenPipe} from './shared/shorten.pipe';
 
 firebase.initializeApp(environment.firebase);
 
@@ -43,7 +44,8 @@ const router: Routes = [
     DropdownDirective,
     InformationComponent,
     UploadComponent,
-    FooterComponent
+    FooterComponent,
+    ShortenPipe
   ],
   imports: [
     FormsModule,
@@ -51,7 +53,7 @@ const router: Routes = [
     HttpModule,
     RouterModule.forRoot(router),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   providers: [ServerService, AuthService, UploadService],
   bootstrap: [AppComponent]
