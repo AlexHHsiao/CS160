@@ -36,23 +36,7 @@ export class UploadService {
         upload.email = this.authService.getEmail();
 
         if (user) {
-          if (this.authService.getPhoto() === 'https://firebasestorage.googleapis.com/v0/b/sjsu-cs-160.' +
-            'appspot.com/o/profile-img%2Fprofile-img.jpg?alt=media&token=5a3481f2-87bf-460a-bb04-ccb1ea98949a') {
-            this.authService.changePhoto(upload.url);
-          } else {
-/*            const deleteTask = storageRef.child(`${this.basePath}/${this.authService.getEmail()}` + '.' + this.getImgType(this.authService.getPhoto()))
-              .delete().then(
-              () => {
-                console.log('delete successfully');
-              }
-            );
-
-            setTimeout(() => {
-              this.authService.changePhoto(upload.url);
-            }, 4000);*/
-
-            this.authService.changePhoto(upload.url);
-          }
+          this.authService.changePhoto(upload.url);
         } else {
           this.saveFileData(upload);
         }
@@ -68,13 +52,5 @@ export class UploadService {
       }
     );
     console.log('File saved!: ' + upload.url);
-  }
-
-  private getImgType(url: string) {
-    if (url.includes('png')) {
-      return 'png';
-    } else if (url.includes('jpeg')) {
-      return 'jpeg';
-    }
   }
 }
