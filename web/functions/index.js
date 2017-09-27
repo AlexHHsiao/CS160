@@ -16,6 +16,15 @@ exports.addMessage = functions.https.onRequest((req, res) => {
   });
 });
 
+/*exports.getUrl = functions.https.onRequest((req, res) => {
+  const user= req.query.text;
+
+  admin.database().ref('/messages').on('event', (data) => {
+
+  });
+});*/
+
+
 
 
 
