@@ -22,13 +22,11 @@ export class ServerService {
     const token = this.authService.getToken();
   }
 
-  testing() {
-    // this.http.get('https://us-central1-sjsu-cs-160.cloudfunctions.net/helloWorld').subscribe(
-    //   data => {
-    //     console.log(data.text());
-    //   }
-    // );
-
-    /*console.log(this.http.get('https://us-central1-sjsu-cs-160.cloudfunctions.net/helloWorld'));*/
+  testing(text: string) {
+    this.http.get('https://us-central1-sjsu-cs-160.cloudfunctions.net/addMessage').subscribe(
+      data => {
+        console.log(data.text());
+      }
+    );
   }
 }

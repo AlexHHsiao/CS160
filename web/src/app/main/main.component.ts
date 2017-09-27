@@ -8,16 +8,17 @@ import {AuthService} from '../service/auth.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  private reader: FileReader;
+
+  a: string;
 
   constructor(private serverService: ServerService, public authService: AuthService) {
-    this.serverService.testing();
   }
 
   ngOnInit() {
   }
 
-  upload() {
-    //this.serverService.storeData();
+  test() {
+
+    this.serverService.testing(this.a);
   }
 }

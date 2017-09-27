@@ -25,12 +25,12 @@ export class UploadComponent implements OnInit {
   onUpload() {
     this.uploadService.setPath('/video-org');
 
-    const fileToUpload = this.file;
-    const fileIndex = _.range(fileToUpload.length);
-    _.each(fileIndex, (idx) => {
-      this.upload = new UploadModel(fileToUpload[idx]);
-      this.uploadService.uploadFile(this.upload);
-    });
+    const blob = this.file[0].slice(0, -1, this.file[0].type);
+    const newFile = new File([blob], this.authService.getEmail() + '.'
+      + this.file[0].type.substr(6, this.file[0].type.length), {type: this.file[0].type});
+
+    this.upload = new UploadModel(newFile);
+    this.uploadService.uploadFile(this.upload);
 
     this.uploadTitle = 'Upload Video';
   }
