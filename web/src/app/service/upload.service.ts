@@ -45,10 +45,7 @@ export class UploadService {
   }
 
   private saveFileData(upload: UploadModel) {
-      this.db.list(`${this.basePath}/`).push(upload);
-
-    // delete the old one
-
+    this.db.list(`${this.basePath}/`).push(upload);
     console.log('File saved!: ' + upload.url);
   }
 }

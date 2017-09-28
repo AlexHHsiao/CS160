@@ -32,3 +32,18 @@
     object-fit: contain;
   }
 }
+
+.footer-ul {
+  height: 100%;
+
+  li {
+    height:100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer-content {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}

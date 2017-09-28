@@ -41,7 +41,7 @@ export class ServerService {
 
     this.db.list('video-org/').subscribe(
       data => {
-        console.log(data[0].url);
+        console.log(data[0]);
       }
     );
 
