@@ -2,7 +2,7 @@
   <div class="navbar-content">
 
     <div class="navbar-header">
-      <a routerLink="" class="navbar-brand">CS 160 Team <b><i>Work</i></b></a>
+      <a class="navbar-brand" (click)="goto('home')">CS 160 Team <b><i>Work</i></b></a>
     </div>
 
     <ul class="nav navbar-nav navbar-right header-btn-ul">
@@ -30,6 +30,14 @@
 
     </ul>
   </div>
+</div>
+
+<div class="menu-container">
+  <ul class="menu">
+    <li (click)="goto('home')" [ngStyle]="{'border-bottom': homeBottom, 'line-height': homeLine}">Home</li>
+    <li (click)="goto('ana')" [ngStyle]="{'border-bottom': anaBottom, 'line-height': anaLine}">Analysis</li>
+    <li (click)="goto('info')" [ngStyle]="{'border-bottom': infoBottom, 'line-height': infoLine}">Who We Are</li>
+  </ul>
 </div>
 
 <div *ngIf='nameChange' class='name-modal'>

@@ -30,6 +30,7 @@ const router: Routes = [
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'information', component: InformationComponent},
+  {path: 'upload', component: UploadComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

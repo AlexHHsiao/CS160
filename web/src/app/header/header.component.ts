@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
 import {UploadService} from '../service/upload.service';
 import {UploadModel} from '../model/upload.model';
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +18,15 @@ export class HeaderComponent implements OnInit {
   file: FileList;
   uploadTitle: string;
 
-  constructor(private router: Router, public authService: AuthService, public uploadService: UploadService) {
+  homeBottom: string;
+  homeLine: string;
+  anaBottom: string;
+  anaLine: string;
+  infoBottom: string;
+  infoLine: string;
+
+  constructor(private router: Router, public authService: AuthService,
+              public uploadService: UploadService) {
     this.nameChange = false;
     this.username = '';
     this.proImgChange = false;
@@ -27,7 +34,46 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.homeBottom = '5px solid #6692E8';
+    this.homeLine = '40px';
+    this.anaBottom = '';
+    this.anaLine = '';
+    this.infoBottom = '';
+    this.infoLine = '';
   }
+
+  goto(page: string) {
+    switch (page) {
+      case 'home':
+        this.router.navigate(['']);
+        this.homeBottom = '5px solid #6692E8';
+        this.homeLine = '40px';
+        this.anaBottom = '';
+        this.anaLine = '';
+        this.infoBottom = '';
+        this.infoLine = '';
+        break;
+      case 'ana':
+        this.router.navigate(['upload']);
+        this.homeBottom = '';
+        this.homeLine = '';
+        this.anaBottom = '5px solid #6692E8';
+        this.anaLine = '40px';
+        this.infoBottom = '';
+        this.infoLine = '';
+        break;
+      case 'info':
+        this.router.navigate(['information']);
+        this.homeBottom = '';
+        this.homeLine = '';
+        this.anaBottom = '';
+        this.anaLine = '';
+        this.infoBottom = '5px solid #6692E8';
+        this.infoLine = '40px';
+        break;
+    }
+  }
+
   register() {
     this.router.navigateByUrl('/signup');
   }

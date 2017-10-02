@@ -2,13 +2,42 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  background-color: whitesmoke;
+  background-color: lightcyan;
   height: 70px;
   border-bottom: 1px solid lightgray;
   position: relative;
   box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
   top: 0;
+}
+
+.menu-container {
+  height: 40px;
+  background-color: lightgray;
   margin-bottom: 20px;
+  //display: inline-block;
+}
+
+.menu {
+  list-style: none;
+  height: 100%;
+  text-align: center;
+
+  li {
+    height: 100%;
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 40px;
+    font-family: "Comic Sans MS";
+    font-size: medium;
+    margin: 0;
+  }
+
+  li:hover {
+    background-color: gray;
+    color: white;
+  }
 }
 
 .navbar-content {
