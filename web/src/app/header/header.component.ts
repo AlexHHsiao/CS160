@@ -75,10 +75,22 @@ export class HeaderComponent implements OnInit {
   }
 
   register() {
+    this.homeBottom = '';
+    this.homeLine = '';
+    this.anaBottom = '';
+    this.anaLine = '';
+    this.infoBottom = '';
+    this.infoLine = '';
     this.router.navigateByUrl('/signup');
   }
 
   signin() {
+    this.homeBottom = '';
+    this.homeLine = '';
+    this.anaBottom = '';
+    this.anaLine = '';
+    this.infoBottom = '';
+    this.infoLine = '';
     this.router.navigateByUrl('/signin');
   }
 
