@@ -4,6 +4,7 @@ const ffmpeg = require('ffmpeg');
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
+const path = require('path');
 admin.initializeApp(functions.config().firebase);
 
 
@@ -24,26 +25,8 @@ exports.test = functions.https.onRequest(function (req, res) {
 
   const fileUrl = 'https://firebasestorage.googleapis.com/v0/b/sjsu-cs-160.' +
     'appspot.com/o/video-org%2Fyizhou.yan92%40gmail.com.avi?alt=media&token=b50afc16-5005-4798-8a7e-0262f87022a1';
+  const file = fs.creat
 
-  const getFile = url.parse(fileUrl, true);
-  const fileName = "." + getFile;
-
-/*  fs.readFile(fileName, function(err, data) {
-
-    res.send(data);
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found");
-    }
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    res.send(data)
-    return res.end();
-  });*/
-fs.readlink(fileUrl, function(err, data) {
-  res.send("asdfas");
-  res.send(data);
-})
 
 });
 
