@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {UploadModel} from '../model/upload.model';
 import {AngularFireModule} from 'angularfire2';
 import * as firebase from 'firebase';
-import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import {AngularFireDatabase} from 'angularfire2/database';
 import {AuthService} from './auth.service';
 
 @Injectable()

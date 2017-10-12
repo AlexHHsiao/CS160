@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {AuthService} from './auth.service';
-import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import {AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase';
 
 @Injectable()
@@ -39,11 +39,11 @@ export class ServerService {
       console.log(snapshot.val());
     });
 
-    this.db.list('video-org/').subscribe(
+/*    this.db.list('video-org/').subscribe(
       data => {
         console.log(data[0]);
       }
-    );
+    );*/
 
     let url = this.createURL({task: 'addMessage', req: text});
 /*    this.http.request(url, {withCredentials: true}).subscribe(
