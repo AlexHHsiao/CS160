@@ -1,0 +1,60 @@
+[debug] [2017-10-08T00:43:34.131Z] ----------------------------------------------------------------------
+[debug] [2017-10-08T00:43:34.131Z] Command:       c:\Program Files\nodejs\node.exe c:\Users\alexh\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions
+[debug] [2017-10-08T00:43:34.131Z] CLI Version:   3.13.0
+[debug] [2017-10-08T00:43:34.131Z] Platform:      win32
+[debug] [2017-10-08T00:43:34.131Z] Node Version:  v8.1.4
+[debug] [2017-10-08T00:43:34.131Z] Time:          Sat Oct 07 2017 17:43:34 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T00:43:34.131Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-08T00:43:34.131Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-08T00:43:34.131Z] > authorizing via signed-in user
+[debug] [2017-10-08T00:43:34.131Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/sjsu-cs-160  
+ Sat Oct 07 2017 17:43:34 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T00:43:34.580Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-08T00:43:34.581Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/sjsu-cs-160/tokens  
+ Sat Oct 07 2017 17:43:34 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T00:43:35.147Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'g:\GitHub\CS160\web'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2017-10-08T00:43:35.360Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/sjsu-cs-160  
+ Sat Oct 07 2017 17:43:35 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T00:43:35.360Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/sjsu-cs-160/apiKeys  
+ Sat Oct 07 2017 17:43:35 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T00:43:35.781Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-08T00:43:35.796Z] <<< HTTP RESPONSE 200
+[info] +  functions: test: http://localhost:5000/sjsu-cs-160/us-central1/test
+[info] +  functions: helloWorld: http://localhost:5000/sjsu-cs-160/us-central1/helloWorld
+[info] +  functions: addMessage: http://localhost:5000/sjsu-cs-160/us-central1/addMessage
+[info] Shutting down...
+[debug] [2017-10-08T01:04:36.131Z] ----------------------------------------------------------------------
+[debug] [2017-10-08T01:04:36.133Z] Command:       c:\Program Files\nodejs\node.exe c:\Users\alexh\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions
+[debug] [2017-10-08T01:04:36.133Z] CLI Version:   3.13.0
+[debug] [2017-10-08T01:04:36.133Z] Platform:      win32
+[debug] [2017-10-08T01:04:36.133Z] Node Version:  v8.1.4
+[debug] [2017-10-08T01:04:36.134Z] Time:          Sat Oct 07 2017 18:04:36 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T01:04:36.134Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-08T01:04:36.142Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-08T01:04:36.142Z] > authorizing via signed-in user
+[debug] [2017-10-08T01:04:36.144Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/sjsu-cs-160  
+ Sat Oct 07 2017 18:04:36 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T01:04:36.623Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-08T01:04:36.624Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/sjsu-cs-160/tokens  
+ Sat Oct 07 2017 18:04:36 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T01:04:37.109Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'g:\GitHub\CS160\web'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2017-10-08T01:04:37.331Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/sjsu-cs-160  
+ Sat Oct 07 2017 18:04:37 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T01:04:37.331Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/sjsu-cs-160/apiKeys  
+ Sat Oct 07 2017 18:04:37 GMT-0700 (太平洋夏令时)
+[debug] [2017-10-08T01:04:37.742Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-08T01:04:37.800Z] <<< HTTP RESPONSE 200
+[info] +  functions: helloWorld: http://localhost:5000/sjsu-cs-160/us-central1/helloWorld
+[info] +  functions: addMessage: http://localhost:5000/sjsu-cs-160/us-central1/addMessage
+[info] +  functions: test: http://localhost:5000/sjsu-cs-160/us-central1/test
+[info] Shutting down...
