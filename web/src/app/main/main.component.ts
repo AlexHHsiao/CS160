@@ -16,9 +16,4 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  test() {
-
-    this.serverService.testing(this.a);
-  }
 }

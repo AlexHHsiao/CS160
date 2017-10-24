@@ -223,3 +223,41 @@
 [info] +  functions: test: http://localhost:5000/sjsu-cs-160/us-central1/test
 [info] +  functions: readDoc: http://localhost:5000/sjsu-cs-160/us-central1/readDoc
 [info] Shutting down...
+[debug] [2017-10-24T02:49:42.982Z] ----------------------------------------------------------------------
+[debug] [2017-10-24T02:49:42.984Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2017-10-24T02:49:42.985Z] CLI Version:   3.13.1
+[debug] [2017-10-24T02:49:42.985Z] Platform:      darwin
+[debug] [2017-10-24T02:49:42.985Z] Node Version:  v8.1.4
+[debug] [2017-10-24T02:49:42.985Z] Time:          Mon Oct 23 2017 19:49:42 GMT-0700 (PDT)
+[debug] [2017-10-24T02:49:42.985Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-24T02:49:43.001Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-24T02:49:43.001Z] > authorizing via signed-in user
+[debug] [2017-10-24T02:49:43.002Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-10-24T02:49:43.003Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/jBIVOrGP9U1_REwWs7E_YBsHW41q82PD9ildFCdhq0U',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Oct 23 2017 19:49:43 GMT-0700 (PDT)
+[debug] [2017-10-24T02:49:43.147Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-24T02:49:43.161Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/sjsu-cs-160  
+ Mon Oct 23 2017 19:49:43 GMT-0700 (PDT)
+[debug] [2017-10-24T02:49:43.550Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-24T02:49:43.551Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/sjsu-cs-160/tokens  
+ Mon Oct 23 2017 19:49:43 GMT-0700 (PDT)
+[debug] [2017-10-24T02:49:44.302Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/fox/CS160/web'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2017-10-24T02:49:45.173Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/sjsu-cs-160  
+ Mon Oct 23 2017 19:49:45 GMT-0700 (PDT)
+[debug] [2017-10-24T02:49:45.173Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/sjsu-cs-160/apiKeys  
+ Mon Oct 23 2017 19:49:45 GMT-0700 (PDT)
+[debug] [2017-10-24T02:49:45.584Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-24T02:49:45.615Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: test: http://localhost:5000/sjsu-cs-160/us-central1/test
+[info] ✔  functions: readDoc: http://localhost:5000/sjsu-cs-160/us-central1/readDoc
+[info] ✔  functions: addMessage: http://localhost:5000/sjsu-cs-160/us-central1/addMessage
+[info] ✔  functions: helloWorld: http://localhost:5000/sjsu-cs-160/us-central1/helloWorld
