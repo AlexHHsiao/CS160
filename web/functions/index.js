@@ -8,6 +8,7 @@ const path = require('path');
 const gcs = require('@google-cloud/storage')();
 const os = require('os');
 const spawn = require('child-process-promise').spawn;
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 
 admin.initializeApp(functions.config().firebase);
 
@@ -23,51 +24,37 @@ exports.addMessage = functions.https.onRequest(function (req, res) {
 exports.extractFrame = functions.https.onRequest(function (req, res) {
 
   const name = req.query.fileName;
+  const username = name.substr(0, name.length - 4);
   const sessionId = 'video-org';
+  const framePath = 'frame-org';
 
   const sourceBucketName = 'sjsu-cs-160.appspot.com';
   const sourceBucket = gcs.bucket(sourceBucketName);
-  const tempDir = os.tmpdir();
+  const temDir = os.tmpdir();
 
-  sourceBucket.file(sessionId + '/' + name).download({
-      destination: tempDir + '/' + name
+  return sourceBucket.file(sessionId + '/' + name).download({
+      destination: temDir + '/' + name
     }
   ).then(() => {
-    res.send('extract frames');
-    console.log(tempDir + '/' + name);
+    console.log('extract frames');
 
-    const process = new ffmpeg(tempDir + '/' + name);
-    process.then(function (video) {
-      // Callback mode
+    return spawn(ffmpegPath, ['-i', temDir + '/' + name, temDir + '/' + username + '%d.png']);
+  }).then(() => {
+    const frames = fs.readdirSync(temDir);
+    console.log(frames);
 
-      const fps = Math.floor(video.metadata.video.fps);
-      console.log(fps);
-      video.fnExtractFrameToJPG(tempDir, {
-        frame_rate: fps,
-        file_name: 'my_frame_%d'
-      }, function (error, files) {
-        if (!error)
-          console.log('Frames: ' + files);
-      });
-    }, function (err) {
-      console.log('Error: ' + err);
-    });
+    for (let index in frames) {
+      if (index != 0) {
+        console.log('uploading');
+        sourceBucket.upload(temDir + '/' + frames[index], {destination: framePath + '/' + frames[index]});
+      }
 
-
-
-
-
-
-
-
-
-    // spawn('ffmpeg', ['-i', tempDir + '/' + name, tempDir + '/' + 'frame%04d.png']);
-    // const a = spawn('ffprobe', ['-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=avg_frame_rate'
-    //   , '-of', 'default=noprint_wrappers=1:nokey=1', tempDir + '/' + name]);
-
-
-
-
-      //tempDir + '/' + name, tempDir + '/' + 'frame%04d.png']);
+      if (index == frames.length) {
+        res.send('I am done');
+        return;
+      }
+    }
   });
+
+
 });
