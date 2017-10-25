@@ -4,6 +4,7 @@
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.13",
     "@google-cloud/storage": "^1.4.0",
+    "child-process-promise": "^2.2.1",
     "ffmpeg": "0.0.4",
     "firebase-admin": "~5.2.1",
     "firebase-functions": "^0.6.2",

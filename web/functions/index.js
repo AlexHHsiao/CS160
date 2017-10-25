@@ -7,13 +7,9 @@ const fs = require('fs');
 const path = require('path');
 const gcs = require('@google-cloud/storage')();
 const os = require('os');
+const spawn = require('child-process-promise').spawn;
 
 admin.initializeApp(functions.config().firebase);
-
-
-exports.helloWorld = functions.https.onRequest(function (request, response) {
-  response.send("Hello this is http");
-});
 
 exports.addMessage = functions.https.onRequest(function (req, res) {
   const original = req.query.name;
@@ -24,67 +20,54 @@ exports.addMessage = functions.https.onRequest(function (req, res) {
   ;
 });
 
-exports.test = functions.https.onRequest(function (req, res) {
-  //const fileUrl = 'https://firebasestorage.googleapis.' +
-  //'com/v0/b/sjsu-cs-160.appspot.com/o/video-org%2Fyizhou.yan92%40gmail.com.avi?alt=media&token=9f77b7b1-1a96-4cf4-8009-3485db2185ea';
+exports.extractFrame = functions.https.onRequest(function (req, res) {
 
-  //const ff = new ffmpeg('C:/Users/alexh/Desktop/alex/yizhou.yan92@gmail.com.avi');
+  const name = req.query.fileName;
+  const sessionId = 'video-org';
 
-  var process = new ffmpeg('C:/Users/alexh/Desktop/alex/test.mp4');
-  //var process = new ffmpeg(fileUrl);
-  process.then(function (video) {
-    // Callback mode
+  const sourceBucketName = 'sjsu-cs-160.appspot.com';
+  const sourceBucket = gcs.bucket(sourceBucketName);
+  const tempDir = os.tmpdir();
 
-    const fps = Math.floor(video.metadata.video.fps);
-    console.log(fps);
-    res.send(video.metadata);
-    video.fnExtractFrameToJPG('C:/Users/alexh/Desktop/alexx', {
-      frame_rate: fps,
-      file_name: 'my_frame_%d'
-    }, function (error, files) {
-      if (!error)
-        console.log('Frames: ' + files);
+  sourceBucket.file(sessionId + '/' + name).download({
+      destination: tempDir + '/' + name
+    }
+  ).then(() => {
+    res.send('extract frames');
+    console.log(tempDir + '/' + name);
+
+    const process = new ffmpeg(tempDir + '/' + name);
+    process.then(function (video) {
+      // Callback mode
+
+      const fps = Math.floor(video.metadata.video.fps);
+      console.log(fps);
+      video.fnExtractFrameToJPG(tempDir, {
+        frame_rate: fps,
+        file_name: 'my_frame_%d'
+      }, function (error, files) {
+        if (!error)
+          console.log('Frames: ' + files);
+      });
+    }, function (err) {
+      console.log('Error: ' + err);
     });
-  }, function (err) {
-    console.log('Error: ' + err);
+
+
+
+
+
+
+
+
+
+    // spawn('ffmpeg', ['-i', tempDir + '/' + name, tempDir + '/' + 'frame%04d.png']);
+    // const a = spawn('ffprobe', ['-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=avg_frame_rate'
+    //   , '-of', 'default=noprint_wrappers=1:nokey=1', tempDir + '/' + name]);
+
+
+
+
+      //tempDir + '/' + name, tempDir + '/' + 'frame%04d.png']);
   });
 });
-
-exports.generateFrame = functions.storage.object().onChange(
-  function (event) {
-    const object = event.data;
-    const filePath = object.name;
-    const fileName = filePath.split('/').pop();
-    const fileBucket = object.bucket;
-    const bucket = gcs.bucket(fileBucket);
-    const tmpFilePath = `/tmp/${fileName}`;
-
-    return bucket.file(filePath).download({
-      destination: tmpFilePath
-    }).then(() => {
-      console.log(fileBucket);
-      console.log(filePath);
-    });
-  }
-);
-
-exports.readDoc = functions.https.onRequest(function (req, res) {
-  const filePath = 'video_org/'
-  const fileName = 'yizhou.yan92@gmail.com.avi';
-  const fileBucket = gcs.bucket('sjsu-cs-160.appspot.com');
-  const bucket = gcs.bucket(fileBucket);
-  const tmpFilePath = `/tmp/${fileName}`;
-
-  console.log(bucket);
-
-/*  const tmpFilePath = `C:/Users/alexh/Desktop/alexx/`;
-
-  return bucket.file(filePath).download({
-    destination: tmpFilePath
-  }).then(() => {
-    console.log(fileBucket);
-    console.log(filePath);
-    console.log(tmpFilePath);
-  });*/
-});
-
