@@ -87,7 +87,8 @@
 
     <div class="btn-list">
       <button class="btn btn-danger" (click)="proImgChange = false; file = null; uploadTitle = 'Upload Profile Photo'; upload = null;">Cancel</button>
-      <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file">Upload</button>
+      <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file || upload?.progress === 100">
+        Upload</button>
     </div>
   </div>
 </div>

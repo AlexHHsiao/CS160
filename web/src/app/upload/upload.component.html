@@ -1,3 +1,7 @@
+<div class="upload-container">
+
+</div>
+
 <div style="margin-top: 10px;">
   <h2>Please Upload Video Here!!</h2>
 
@@ -7,9 +11,10 @@
            [ngStyle]="{ 'width': upload?.progress + '%' }">{{upload?.progress}} %</div>
     </div>
 
-    <div *ngIf="upload?.progress === 100">
-      Upload Completed!!!
-    </div>
+    <span class="help-block" *ngIf="upload?.progress === 100"
+          style="background-color: cornflowerblue; color: white; text-align: center; border-radius: 5px;">
+        Upload Completed!!!
+    </span>
 
   </div>
 
@@ -20,7 +25,8 @@
     <input id="file-upload" name='upload_cont_img' type="file" style="display:none;" (change)="handleFile($event)">
   </form>
 
-  <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file">Upload</button>
+  <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file || upload?.progress === 100">
+    Upload</button>
 
 </div>
 
