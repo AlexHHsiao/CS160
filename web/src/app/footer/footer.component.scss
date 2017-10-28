@@ -3,47 +3,44 @@
   box-sizing: border-box;
   width: 100%;
   background-color: whitesmoke;
-  height: 70px;
+  height: 40px;
   border-top: 1px solid lightgray;
   position: fixed;
   box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 20px;
-  top: calc(100% - 70px);
+  top: calc(100% - 40px);
 }
 
 .footer-content {
-  margin-left: 10%;
-  margin-right: 10%;
-  height: 100%;
-  background-color: red;
+  display: table;
+  margin: 0 auto;
 }
 
-.profile {
-  margin-top: 10px;
-  height: 50px;
-  width: 50px;
-  text-align: center;
-  border: black solid 1px;
+.github {
+  display: inline-block;
+  height: 30px;
+  width: 40px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 
   img {
     height: 100%;
-    width: 100%;
     -o-object-fit: contain;
     object-fit: contain;
+    cursor: pointer;
+    width: 30px;
+    border-radius: 50%
+  }
+
+  img:hover {
+    background-color: #8c8c8c;
   }
 }
 
-.footer-ul {
-  height: 100%;
-
-  li {
-    height:100%;
-  }
+.right {
+  display: inline-block;
+  font-style: italic;
+  font-family: "Comic Sans MS";
 }
 
 @media only screen and (max-width: 768px) {
-  .footer-content {
-    margin-right: 0;
-    margin-left: 0;
-  }
 }

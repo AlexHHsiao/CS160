@@ -167,6 +167,20 @@
   margin-right: 5px;
 }
 
+.icon {
+  height: 100%;
+  display: inline-block;
+  float: left;
+  margin-left: 20px;
+
+  img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+  }
+}
+
 @-webkit-keyframes animatetop {
   from {top: -300px; opacity: 0}
   to {top: 0; opacity: 1}
