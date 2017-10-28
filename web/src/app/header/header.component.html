@@ -39,7 +39,10 @@
 <div class="menu-container">
   <ul class="menu">
     <li (click)="goto('home')" [ngStyle]="{'border-bottom': homeBottom, 'line-height': homeLine}">Home</li>
-    <li (click)="goto('ana')" [ngStyle]="{'border-bottom': anaBottom, 'line-height': anaLine}">Analysis</li>
+    <li (click)="goto('ana')" [ngStyle]="{'border-bottom': anaBottom, 'line-height': anaLine}"
+        *ngIf="authService.isAuth()">
+      Analysis
+    </li>
     <li (click)="goto('info')" [ngStyle]="{'border-bottom': infoBottom, 'line-height': infoLine}">Who We Are</li>
   </ul>
 </div>
