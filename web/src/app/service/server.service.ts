@@ -11,9 +11,8 @@ export class ServerService {
   constructor(private http: Http, private authService: AuthService, private db: AngularFireDatabase) {
   }
 
-  createURL(url_parts: { task?: string, req?: string }) {
-
-
+  private createURL(url_parts: { task?: string, req?: string, text?: string }) {
+    //https://us-central1-sjsu-cs-160.cloudfunctions.net/extractFrame?filename=
     let url = 'https://us-central1-sjsu-cs-160.cloudfunctions.net';
 
     if (!url_parts.task) {
@@ -22,15 +21,17 @@ export class ServerService {
       url += '/' + url_parts.task;
     }
 
-    let params = new URLSearchParams();
-
     if (url_parts.req) {
-      params.set('text', url_parts.req);
+      url += '?' + url_parts.req + '=' + url_parts.text;
     }
 
-    url += '?' + params.toString();
-
     return url;
+  }
+
+  extractFrame(email: string) {
+    const url = this.createURL({task: 'extractFrame', req: 'fileName', text: email});
+
+    return this.http.get(url);
   }
 
   testing(text: string) {

@@ -5,9 +5,10 @@
   background-color: lightcyan;
   height: 70px;
   border-bottom: 1px solid lightgray;
-  position: relative;
+  position: fixed;
   box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
   top: 0;
+  z-index: 1;
 }
 
 .menu-container {
@@ -16,6 +17,8 @@
   margin-bottom: 20px;
   width: 100%;
   -webkit-padding-start: 0;
+  position: fixed;
+  top: 72px;
 }
 
 .menu {

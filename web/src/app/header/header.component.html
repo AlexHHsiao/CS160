@@ -25,7 +25,7 @@
         <a style="cursor: pointer; line-height: 40px; font-size: x-large;" class="dropdown-toggle" role="button">{{authService.getUsername()| shorten: 10}}
           <span class="caret"></span>
         </a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" style="z-index: 2">
           <li><a style="cursor: pointer;" (click)="nameChange = true;">Change Username</a></li>
           <li><a style="cursor: pointer;" (click)="proImgChange = true;">Change Profile Image</a></li>
           <li><a style="cursor: pointer;" (click)="logout()">Log Out</a></li>
@@ -76,10 +76,11 @@
       </div>
     </div>
 
-
-    <div *ngIf="upload?.progress === 100" style="text-align: center">
+    <span class="help-block" *ngIf="upload?.progress === 100"
+          style="background-color: cornflowerblue; color: white; text-align: center;
+          border-radius: 5px; margin-left: 10px; margin-right: 10px">
       Profile Image Has Been Changed!!!
-    </div>
+    </span>
 
     <form style="margin-top: 10px; margin-bottom: 10px;">
       <label for="file-upload" class="custom-file-upload" (change)="handleFile($event)">

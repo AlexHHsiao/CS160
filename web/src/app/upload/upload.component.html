@@ -1,32 +1,105 @@
-<div class="upload-container">
+<div class="instruction">
+  <div class="ins-header">
+    <img src='../../assets/img/manual.png'>
 
+    <span>Instruction</span>
+  </div>
+
+  <ul>
+    <li>
+      You have to upload a video in order to get processed. Be sure that the video contains faces. Otherwise
+      we will not able to recognize faces.
+    </li>
+
+    <li>
+      After asdfsfasfjasdkfjask
+    </li>
+
+    <li>
+      After asdfsfasfjasdkfjask
+    </li>
+
+    <li>
+      After asdfsfasfjasdkfjask
+    </li>
+
+  </ul>
+</div>
+
+<div class="body">
+  <div class="operate-container">
+
+    <div class="group">
+      <span>Please Upload Video Here!</span>
+
+      <form style="margin: 10px">
+        <label for="file-upload" class="custom-file-upload" (change)="handleFile($event)">
+          {{uploadTitle| shorten: 30}}
+        </label>
+        <input id="file-upload" name='upload_cont_img' type="file" style="display:none;" (change)="handleFile($event)">
+      </form>
+
+      <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file || upload?.progress === 100">
+        Upload
+      </button>
+    </div>
+
+    <div class="group">
+      <span>
+        Click button to extract frames!!
+      </span>
+
+      <button class="btn-primary btn" (click)="extractFrame()">
+        Extract Frames
+      </button>
+    </div>
+
+
+    <div class="group">
+      <span>
+        Click button to detect faces and draw the line!!
+      </span>
+
+      <button class="btn-primary btn">
+        Detect Faces
+      </button>
+    </div>
+
+    <div class="group">
+      <span>
+        Produce the video with faces detected!!
+      </span>
+
+      <button class="btn-primary btn">
+        Produce Video
+      </button>
+    </div>
+  </div>
+
+  <div class="command-container">
+    <div class="command">
+
+      <div *ngIf="upload">
+        <div class="progress">
+          <div class="progress-bar progress-bar-success progress-bar-animated progress-bar-striped active"
+               [ngStyle]="{ 'width': upload?.progress + '%' }">{{upload?.progress}} %
+          </div>
+        </div>
+
+        <span class="help-block" *ngIf="upload?.progress === 100"
+              style="background-color: cornflowerblue; color: white; text-align: center; border-radius: 5px;">
+          Upload Completed!!!
+        </span>
+      </div>
+
+
+      <img *ngIf="loading" class="img-responsive" src="./../../assets/img/loading.gif" style="margin: auto">
+    </div>
+  </div>
 </div>
 
 <div style="margin-top: 10px;">
-  <h2>Please Upload Video Here!!</h2>
 
-  <div *ngIf="upload">
-    <div class="progress">
-      <div class="progress-bar progress-bar-success progress-bar-animated progress-bar-striped active"
-           [ngStyle]="{ 'width': upload?.progress + '%' }">{{upload?.progress}} %</div>
-    </div>
-
-    <span class="help-block" *ngIf="upload?.progress === 100"
-          style="background-color: cornflowerblue; color: white; text-align: center; border-radius: 5px;">
-        Upload Completed!!!
-    </span>
-
-  </div>
-
-  <form>
-    <label for="file-upload" class="custom-file-upload" (change)="handleFile($event)">
-      {{uploadTitle}}
-    </label>
-    <input id="file-upload" name='upload_cont_img' type="file" style="display:none;" (change)="handleFile($event)">
-  </form>
-
-  <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file || upload?.progress === 100">
-    Upload</button>
 
 </div>
 

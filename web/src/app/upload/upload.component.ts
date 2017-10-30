@@ -3,6 +3,7 @@ import {UploadService} from '../service/upload.service';
 import {UploadModel} from '../model/upload.model';
 import * as _ from 'lodash';
 import {AuthService} from '../service/auth.service';
+import {ServerService} from '../service/server.service';
 
 @Component({
   selector: 'app-upload',
@@ -14,9 +15,13 @@ export class UploadComponent implements OnInit {
   upload: UploadModel;
   file: FileList;
   uploadTitle: string;
+  loading: boolean;
+  fileName: string;
 
-  constructor(private uploadService: UploadService, private authService: AuthService) {
+  constructor(private uploadService: UploadService, private authService: AuthService,
+              private serverService: ServerService) {
     this.uploadTitle = 'Upload Video';
+    this.loading = true;
   }
 
   ngOnInit() {
@@ -33,10 +38,21 @@ export class UploadComponent implements OnInit {
     this.uploadService.uploadFile(this.upload);
 
     this.uploadTitle = 'Upload Video';
+    this.loading = false;
+    this.fileName = newFile.name;
+    console.log(this.fileName);
   }
 
   handleFile(event) {
     this.file = event.target.files;
     this.uploadTitle = event.target.files[0].name;
+  }
+
+  extractFrame() {
+    this.serverService.extractFrame(this.fileName).subscribe(
+      (data) => {
+        console.log(data);
+      }
+    );
   }
 }

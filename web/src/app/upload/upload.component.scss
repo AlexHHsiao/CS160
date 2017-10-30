@@ -11,6 +11,77 @@
   color: white;
 }
 
-.upload-container {
+.body {
+  display: block;
+  margin-top: 10px;
+}
 
+.instruction {
+  margin-bottom: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  li {
+    font-size: large;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-family: 'Courier New';
+    word-wrap: break-word;
+  }
+}
+
+.ins-header {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+
+  img {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+  }
+
+  span {
+    font-size: x-large;
+    font-weight: bold;
+    color: #5bc0de;
+  }
+}
+
+.command-container {
+  border: 1px solid dimgrey;
+  border-radius: 10px;
+  width: 55%;
+  display: table;
+  padding: 10px;
+  float: right;
+  min-height: 300px;
+  max-height: 500px;
+  background-color: whitesmoke;
+}
+
+.operate-container {
+  width: 40%;
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+
+  span {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: medium;
+    display: block;
+    font-family: 'Comic Sans MS';
+  }
+}
+
+.group {
+  border-bottom: solid 1px darkgray;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.command{
+  display: table-cell;
+  vertical-align: middle;
 }
