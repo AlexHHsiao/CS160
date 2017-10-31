@@ -13,7 +13,6 @@ export class ServerService {
 
   private createURL(url_parts: { task?: string, req?: string, text?: string }) {
 
-    //let url = 'https://us-central1-sjsu-cs-160.cloudfunctions.net';
     let url = 'http://localhost:5000/sjsu-cs-160/us-central1';
 
     if (!url_parts.task) {
@@ -29,9 +28,13 @@ export class ServerService {
     return url;
   }
 
-  extractFrame(email: string) {
-    const url = this.createURL({task: 'extractFrameLocal', req: 'fileName', text: email});
+  extractFrame(name: string) {
+    const url = this.createURL({task: 'extractFrameLocal', req: 'fileName', text: name});
+    return this.http.get(url);
+  }
 
+  generateVideo(email: string) {
+    const url = this.createURL({task: 'drawFace', req: 'email', text: email});
     return this.http.get(url);
   }
 

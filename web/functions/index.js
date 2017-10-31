@@ -142,3 +142,9 @@ exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
   });
 });
 
+exports.drawFace = functions.https.onRequest(function (req, res) {
+  //fmpeg -r 30 -start_number 1 -f image2 -i input_image_%d.png -c:v libx264 output.mp4
+  const promise = spawn('python', ['/home/alex/CS160/dlib-19.1/python_examples/ttttttttttt.py',
+    '/home/alex/CS160/dlib-19.1/python_examples/shape_predictor_68_face_landmarks.dat',
+    '/home/alex/CS160/dlib-19.1/python_examples/faces/']);
+});

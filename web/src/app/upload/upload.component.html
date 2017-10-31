@@ -58,21 +58,11 @@
 
     <div class="group">
       <span>
-        Click button to detect faces and draw the line!!
+        Click button to detect faces and generate video with face detected!!
       </span>
 
       <button class="btn-primary btn" (click)="detectFace()" [disabled]="faceBtnDisable">
-        Detect Faces
-      </button>
-    </div>
-
-    <div class="group">
-      <span>
-        Produce the video with faces detected!!
-      </span>
-
-      <button class="btn-primary btn">
-        Produce Video
+        Generate Video
       </button>
     </div>
   </div>
@@ -99,14 +89,13 @@
         <span>File Name: {{dataSet.fileName}}</span>
       </div>
 
+      <div class="vid">
+
+      </div>
 
       <img *ngIf="loading" class="img-responsive" src="./../../assets/img/loading.gif" style="margin: auto">
     </div>
   </div>
 </div>
 
-<div style="margin-top: 10px;">
-
-
-</div>
 
