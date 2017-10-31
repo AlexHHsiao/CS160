@@ -5,6 +5,10 @@ const gcs = require('@google-cloud/storage')();
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffprobePath = require('@ffprobe-installer/ffprobe').path;
 
+//
+// This file is only for testing purpose
+//
+
 function extractFrame() {
 
   console.log(parseInt('301/1'));
@@ -37,4 +41,8 @@ function extractFrame() {
 
 }
 
-extractFrame();
+function temPath() {
+  console.log(os.tmpdir());
+}
+
+temPath();

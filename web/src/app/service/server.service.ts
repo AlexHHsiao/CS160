@@ -12,8 +12,9 @@ export class ServerService {
   }
 
   private createURL(url_parts: { task?: string, req?: string, text?: string }) {
-    //https://us-central1-sjsu-cs-160.cloudfunctions.net/extractFrame?filename=
-    let url = 'https://us-central1-sjsu-cs-160.cloudfunctions.net';
+
+    //let url = 'https://us-central1-sjsu-cs-160.cloudfunctions.net';
+    let url = 'http://localhost:5000/sjsu-cs-160/us-central1';
 
     if (!url_parts.task) {
       return url;
@@ -29,7 +30,7 @@ export class ServerService {
   }
 
   extractFrame(email: string) {
-    const url = this.createURL({task: 'extractFrame', req: 'fileName', text: email});
+    const url = this.createURL({task: 'extractFrameLocal', req: 'fileName', text: email});
 
     return this.http.get(url);
   }

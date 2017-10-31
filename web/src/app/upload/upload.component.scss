@@ -58,6 +58,7 @@
   min-height: 300px;
   max-height: 500px;
   background-color: whitesmoke;
+  overflow: auto;
 }
 
 .operate-container {
@@ -84,4 +85,13 @@
 .command{
   display: table-cell;
   vertical-align: middle;
+}
+
+.extractFrame {
+  margin: 0 auto;
+  display: table;
+
+  span {
+    display: block;
+  }
 }

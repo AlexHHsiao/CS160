@@ -48,14 +48,17 @@ exports.extractFrame = functions.https.onRequest(function (req, res) {
 
     childProcess.stdout.on('data', function (data) {
       console.log('[spawn] stdout: ', data.toString());
-      fps = parseInt(data.toString());
+      const fpsArray = data.toString().split('/');
+      fps = fpsArray[0] / fpsArray[1];
     });
     childProcess.stderr.on('data', function (data) {
       console.log('[spawn] stderr: ', data.toString());
     });
   }).then(() => {
     console.log('extract frames');
-    return spawn(ffmpegPath, ['-i', temDir + '/' + name, temDir + '/' + username + '%d.png']);
+    //ffmpeg -i input.mp4 -vf fps=30 out%d.png
+    return spawn(ffmpegPath, ['-i', temDir + '/' + name, '-vf', 'fps=' + fps,
+      temDir + '/' + username + '%d.png']);
   }).then(() => {
     const frames = fs.readdirSync(temDir);
     total_frame = frames.length - 1;
@@ -73,6 +76,10 @@ exports.extractFrame = functions.https.onRequest(function (req, res) {
     return Promise.all(promiseArray);
   }).then(() => {
     console.log('sending res');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({
       fps: fps,
@@ -81,3 +88,57 @@ exports.extractFrame = functions.https.onRequest(function (req, res) {
     }));
   });
 });
+
+exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
+
+  const name = req.query.fileName;
+  const username = name.substr(0, name.length - 4);
+  const sessionId = 'video-org';
+  const framePath = '/Users/fox/CS160Project';
+
+  const sourceBucketName = 'sjsu-cs-160.appspot.com';
+  const sourceBucket = gcs.bucket(sourceBucketName);
+  const temDir = os.tmpdir();
+
+  // res to frontend
+  let fps;
+  let total_frame;
+
+  return sourceBucket.file(sessionId + '/' + name).download({
+      destination: temDir + '/' + name
+    }
+  ).then(() => {
+    console.log('read metadata of video');
+
+    const promise = spawn(ffprobePath, ['-v', 'error', '-select_streams', 'v:0', '-show_entries',
+      'stream=avg_frame_rate', '-of', 'default=noprint_wrappers=1:nokey=1', temDir + '/' + name]);
+    const childProcess = promise.childProcess;
+
+    childProcess.stdout.on('data', function (data) {
+      console.log('[spawn] stdout: ', data.toString());
+      fps = parseInt(data.toString());
+    });
+    childProcess.stderr.on('data', function (data) {
+      console.log('[spawn] stderr: ', data.toString());
+    });
+  }).then(() => {
+    console.log('extract frames');
+    return spawn(ffmpegPath, ['-i', temDir + '/' + name, framePath + '/' + username + '%d.png']);
+  }).then(() => {
+    const frames = fs.readdirSync(framePath);
+    total_frame = frames.length - 1;
+
+    console.log('sending res');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({
+      fps: fps,
+      total_frame: total_frame,
+      fileName: name
+    }));
+  });
+});
+

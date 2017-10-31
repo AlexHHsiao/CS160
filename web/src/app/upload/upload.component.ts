@@ -18,10 +18,15 @@ export class UploadComponent implements OnInit {
   loading: boolean;
   fileName: string;
 
+  faceBtnDisable: boolean;
+  dataSet: any;
+
   constructor(private uploadService: UploadService, private authService: AuthService,
               private serverService: ServerService) {
     this.uploadTitle = 'Upload Video';
     this.loading = true;
+    this.dataSet = null;
+    this.faceBtnDisable = true;
   }
 
   ngOnInit() {
@@ -40,7 +45,6 @@ export class UploadComponent implements OnInit {
     this.uploadTitle = 'Upload Video';
     this.loading = false;
     this.fileName = newFile.name;
-    console.log(this.fileName);
   }
 
   handleFile(event) {
@@ -49,10 +53,28 @@ export class UploadComponent implements OnInit {
   }
 
   extractFrame() {
+
+    this.loading = true;
+    this.upload = null;
+    this.file = null;
+
+    let ffmpegData;
+
     this.serverService.extractFrame(this.fileName).subscribe(
       (data) => {
-        console.log(data);
+        console.log(data.json());
+        ffmpegData = data.json();
+        this.dataSet = ffmpegData;
+      }, null, () => {
+        this.loading = false;
+        this.faceBtnDisable = false;
       }
     );
+  }
+
+  detectFace() {
+    this.loading = true;
+    this.dataSet = null;
+    this.faceBtnDisable = true;
   }
 }
