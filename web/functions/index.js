@@ -5,7 +5,7 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-const gcs = require('@google-cloud/storage')();
+const gcs = require('@google-cloud/storage')({keyFilename: '../sjsu-cs-160-firebase-adminsdk-qc6zo-9ffaf3cefd.json'});
 const os = require('os');
 const spawn = require('child-process-promise').spawn;
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
@@ -89,20 +89,57 @@ exports.extractFrame = functions.https.onRequest(function (req, res) {
   });
 });
 
+
+// local version due to limited cloud cpu and rom
 exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
 
   const name = req.query.fileName;
   const username = name.substr(0, name.length - 4);
   const sessionId = 'video-org';
-  const framePath = '/Users/fox/CS160Project';
+  const framePath = '/home/alex/CS160/dlib-19.1/python_examples/faces';
+  const cloudResultPath = 'video-edit';
 
   const sourceBucketName = 'sjsu-cs-160.appspot.com';
   const sourceBucket = gcs.bucket(sourceBucketName);
-  const temDir = os.tmpdir();
+  const temDir = '/home/alex/CS160/dlib-19.1/python_examples/video';
+  const finalDir = '/home/alex/CS160/dlib-19.1/python_examples/video-edit';
+  const videoEdit = username + '.mp4';
 
   // res to frontend
   let fps;
   let total_frame;
+  let url;
+
+  //remove everything in image folder and video folder
+  fs.readdir(framePath, (err, files) => {
+    if (err) throw err;
+
+    for (const file of files) {
+      fs.unlink(path.join(framePath, file), err => {
+        if (err) throw err;
+      });
+    }
+  });
+
+  fs.readdir(finalDir, (err, files) => {
+    if (err) throw err;
+
+    for (const file of files) {
+      fs.unlink(path.join(finalDir, file), err => {
+        if (err) throw err;
+      });
+    }
+  });
+
+  // fs.readdir(temDir, (err, files) => {
+  //   if (err) throw err;
+  //
+  //   for (const file of files) {
+  //     fs.unlink(path.join(temDir, file), err => {
+  //       if (err) throw err;
+  //     });
+  //   }
+  // });
 
   return sourceBucket.file(sessionId + '/' + name).download({
       destination: temDir + '/' + name
@@ -116,19 +153,47 @@ exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
 
     childProcess.stdout.on('data', function (data) {
       console.log('[spawn] stdout: ', data.toString());
-      fps = parseInt(data.toString());
+      const fpsArray = data.toString().split('/');
+      fps = fpsArray[0] / fpsArray[1];
     });
     childProcess.stderr.on('data', function (data) {
       console.log('[spawn] stderr: ', data.toString());
     });
   }).then(() => {
     console.log('extract frames');
-    return spawn(ffmpegPath, ['-i', temDir + '/' + name, framePath + '/' + username + '%d.png']);
+    return spawn(ffmpegPath, ['-i', temDir + '/' + name, framePath + '/' + username + '%d.jpg']);
   }).then(() => {
+    console.log('draw face');
     const frames = fs.readdirSync(framePath);
-    total_frame = frames.length - 1;
+    total_frame = frames.length;
+
+    //res.send('HAHAHAH');
+    return spawn('python', ['/home/alex/CS160/dlib-19.1/python_examples/drawFace.py',
+      '/home/alex/CS160/dlib-19.1/python_examples/shape_predictor_68_face_landmarks.dat',
+      '/home/alex/CS160/dlib-19.1/python_examples/faces/']);
+
+  }).then(() => {
+    console.log('generate video');
+
+    return spawn('ffmpeg', ['-r', fps.toString(), '-start_number', '1', '-f', 'image2', '-i',
+      framePath + '/' + username + '%d.jpg_processed', '-c:v', 'libx264', finalDir + '/' + videoEdit]);
+  }).then(() => {
+    // upload video to cloud storage
+    return sourceBucket.upload(finalDir + '/' + videoEdit, {destination: cloudResultPath + '/' + videoEdit});
+  }).then(() => {
+    let file = sourceBucket.file(cloudResultPath + '/' + videoEdit);
+
+    return file.getSignedUrl({
+      action: 'read',
+      expires: '03-09-2491'
+    }).then(signedUrls => {
+      console.log(signedUrls[0]);
+      url = signedUrls[0];
+    });
+  }).then(() => {
 
     console.log('sending res');
+
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
@@ -137,14 +202,8 @@ exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
     res.send(JSON.stringify({
       fps: fps,
       total_frame: total_frame,
-      fileName: name
+      fileName: name,
+      url: url
     }));
   });
-});
-
-exports.drawFace = functions.https.onRequest(function (req, res) {
-  //fmpeg -r 30 -start_number 1 -f image2 -i input_image_%d.png -c:v libx264 output.mp4
-  const promise = spawn('python', ['/home/alex/CS160/dlib-19.1/python_examples/ttttttttttt.py',
-    '/home/alex/CS160/dlib-19.1/python_examples/shape_predictor_68_face_landmarks.dat',
-    '/home/alex/CS160/dlib-19.1/python_examples/faces/']);
 });

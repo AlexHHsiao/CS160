@@ -36,7 +36,7 @@
         <label for="file-upload" class="custom-file-upload" (change)="handleFile($event)">
           {{uploadTitle| shorten: 30}}
         </label>
-        <input id="file-upload" name='upload_cont_img' type="file" style="display:none;" (change)="handleFile($event)">
+        <input id="file-upload" name='upload_cont_img' type="file" style="display:none;" (change)="handleFile($event)" accept="video/mp4">
       </form>
 
       <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file || upload?.progress === 100">
@@ -46,23 +46,12 @@
 
     <div class="group">
       <span>
-        Click button to extract frames!!
+        Click button to generate a video with face detected!!
       </span>
 
       <button class="btn-primary btn" (click)="extractFrame()"
               [disabled]="upload?.progress !== 100">
-        Extract Frames
-      </button>
-    </div>
-
-
-    <div class="group">
-      <span>
-        Click button to detect faces and generate video with face detected!!
-      </span>
-
-      <button class="btn-primary btn" (click)="detectFace()" [disabled]="faceBtnDisable">
-        Generate Video
+        Process
       </button>
     </div>
   </div>
@@ -84,13 +73,9 @@
       </div>
 
       <div class="extractFrame" *ngIf="!loading && dataSet !== null">
-        <span>FPS: {{dataSet.fps}}</span>
-        <span>Total Frames: {{dataSet.total_frame}}</span>
-        <span>File Name: {{dataSet.fileName}}</span>
-      </div>
-
-      <div class="vid">
-
+        <video controls autoplay>
+          <source [src]="dataSet.url" type="video/mp4">
+        </video>
       </div>
 
       <img *ngIf="loading" class="img-responsive" src="./../../assets/img/loading.gif" style="margin: auto">

@@ -33,11 +33,6 @@ export class ServerService {
     return this.http.get(url);
   }
 
-  generateVideo(email: string) {
-    const url = this.createURL({task: 'drawFace', req: 'email', text: email});
-    return this.http.get(url);
-  }
-
   testing(text: string) {
 
     firebase.database().ref('video-org/').on('value', (snapshot) => {
