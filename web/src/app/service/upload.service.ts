@@ -18,6 +18,12 @@ export class UploadService {
     this.basePath = path;
   }
 
+  getFile(email: string) {
+    const name = email + '.mp4';
+    const url = firebase.storage().ref().child('video-edit/' + name).getDownloadURL();
+    return url;
+  }
+
   uploadFile(upload: UploadModel, user?: string) {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`)

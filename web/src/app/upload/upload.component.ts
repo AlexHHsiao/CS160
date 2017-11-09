@@ -17,6 +17,7 @@ export class UploadComponent implements OnInit {
   uploadTitle: string;
   loading: boolean;
   fileName: string;
+  resultUrl: string;
 
   dataSet: any;
 
@@ -25,6 +26,7 @@ export class UploadComponent implements OnInit {
     this.uploadTitle = 'Upload Video';
     this.loading = true;
     this.dataSet = null;
+    this.resultUrl = '';
   }
 
   ngOnInit() {
@@ -65,6 +67,16 @@ export class UploadComponent implements OnInit {
     this.file = null;
 
     let ffmpegData;
+
+    this.uploadService.getFile(this.authService.getEmail()).then((data) => {
+      ffmpegData = data;
+      this.resultUrl = ffmpegData;
+      this.loading = false;
+    });
+
+    // setTimeout(() => {
+    //   console.log(this.resultUrl);
+    // }, 3000);
 
     // this.serverService.extractFrame(this.fileName).subscribe(
     //   (data) => {

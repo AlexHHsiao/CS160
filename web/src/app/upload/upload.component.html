@@ -72,9 +72,9 @@
         </span>
       </div>
 
-      <div class="extractFrame" *ngIf="!loading && dataSet !== null">
+      <div class="extractFrame" *ngIf="!loading && resultUrl !== ''">
         <video controls autoplay>
-          <source [src]="dataSet.url" type="video/mp4">
+          <source [src]="resultUrl" type="video/mp4">
         </video>
       </div>
 
