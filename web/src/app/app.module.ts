@@ -22,6 +22,7 @@ import {environment} from '../environments/environment';
 import * as firebase from 'firebase';
 import { FooterComponent } from './footer/footer.component';
 import {ShortenPipe} from './shared/shorten.pipe';
+import {AuthGuard} from './shared/auth.guard';
 
 firebase.initializeApp(environment.firebase);
 
@@ -30,7 +31,7 @@ const router: Routes = [
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'information', component: InformationComponent},
-  {path: 'upload', component: UploadComponent},
+  {path: 'upload', component: UploadComponent, canActivate: [AuthGuard]},
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -56,7 +57,7 @@ const router: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
   ],
-  providers: [ServerService, AuthService, UploadService],
+  providers: [ServerService, AuthService, UploadService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

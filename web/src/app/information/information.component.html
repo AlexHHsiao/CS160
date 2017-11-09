@@ -1,3 +1,68 @@
-<p>
-  information works!
-</p>
+<div class="title">
+  We are a group of student with passion!!
+</div>
+
+<div class="intro">
+  <div class="sjsu">
+    <img src="../../assets/img/sjsu_logo.png">
+  </div>
+
+  <div class="group-info">
+    <p>
+      asdfffffffffffffff sdf asdf asd f ad f asdf as df as fda f
+       asdf a sdf ad f asdf
+      ] af               dfdfd asd f asdf
+       asdf as df
+       asdf asdf
+      a sdf asd fa sdf
+       asdf as df asdf
+    </p>
+  </div>
+</div>
+
+<div class="member-group">
+  <div class="member" [ngStyle]="{'transform': animation1}" (click)="turnPage(1)">
+    <div class="mem-img">
+      <img src="../../assets/img/profile-img.jpg">
+    </div>
+
+    <div class="mem-info">
+      <div class="name">
+        <a (click)="goto('xiao')">Alex Xiao</a>
+      </div>
+      <div class="info">
+        The most handsome guys in the world!!!
+      </div>
+    </div>
+  </div>
+
+  <div class="member" [ngStyle]="{'transform': animation2}" (click)="turnPage(2)">
+    <div class="mem-img">
+      <img src="../../assets/img/profile-img.jpg">
+    </div>
+
+    <div class="mem-info">
+      <div class="name">
+        <a (click)="goto('yan')">Yanyi Zhou</a>
+      </div>
+      <div class="info">
+        The most handsome guys in the world!!!
+      </div>
+    </div>
+  </div>
+
+  <div class="member" [ngStyle]="{'transform': animation3}" (click)="turnPage(3)">
+    <div class="mem-img">
+      <img src="../../assets/img/profile-img.jpg">
+    </div>
+
+    <div class="mem-info">
+      <div class="name">
+        <a (click)="goto()">Tine</a>
+      </div>
+      <div class="info">
+        The most handsome guys in the world!!!
+      </div>
+    </div>
+  </div>
+</div>

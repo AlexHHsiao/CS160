@@ -1,0 +1,73 @@
+.title {
+  width: 100%;
+  text-align:  center;
+  font-size: xx-large;
+  color: tomato;
+  font-family: "Comic Sans MS";
+  margin-bottom: 20px;
+}
+
+.intro {
+  display: table;
+  width: 100%;
+}
+
+.sjsu {
+  display: inline-table;
+  width: 30%;
+  border: solid 1px lightgrey;
+  padding: 10px;
+}
+.group-info {
+  display: inline-table;
+  width: 70%;
+  padding: 10px;
+  font-size: large;
+}
+
+.member-group {
+  margin-top: 20px;
+  display: table;
+  width: 100%;
+}
+
+.member {
+  border: solid 1px lightgrey;
+  display: inline-table;
+  width: 30%;
+  padding: 10px;
+  margin-right: 1.5%;
+  margin-left: 1.5%;
+  cursor: pointer;
+
+  transform-style: preserve-3d;
+  transition: 1s;
+}
+
+.member:hover {
+  background-color: lightgrey;
+}
+
+.mem-info {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  position: relative;
+}
+
+.mem-img {
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.name {
+  font-size: large;
+  text-align: left;
+  font-weight: bold;
+}
