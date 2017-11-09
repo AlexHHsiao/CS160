@@ -7,15 +7,7 @@
     </div>
 
     <div>
-      <div class="title">
-        <p *ngIf="!authService.isAuth()">
-            Please Sign In to Get Access
-        </p>
 
-        <p *ngIf="authService.isAuth()">
-          Welcome back {{authService.getUsername()}}
-        </p>
-      </div>
     </div>
   </div>
 </div>
