@@ -68,24 +68,24 @@ export class UploadComponent implements OnInit {
 
     let ffmpegData;
 
-    this.uploadService.getFile(this.authService.getEmail()).then((data) => {
-      ffmpegData = data;
-      this.resultUrl = ffmpegData;
-      this.loading = false;
-    });
+    // this.uploadService.getFile(this.authService.getEmail()).then((data) => {
+    //   ffmpegData = data;
+    //   this.resultUrl = ffmpegData;
+    //   this.loading = false;
+    // });
 
     // setTimeout(() => {
     //   console.log(this.resultUrl);
     // }, 3000);
 
-    // this.serverService.extractFrame(this.fileName).subscribe(
-    //   (data) => {
-    //     console.log(data.json());
-    //     ffmpegData = data.json();
-    //     this.dataSet = ffmpegData;
-    //   }, null, () => {
-    //     this.loading = false;
-    //   }
-    // );
+    this.serverService.extractFrame(this.fileName).subscribe(
+      (data) => {
+        console.log(data.json());
+        ffmpegData = data.json();
+        this.dataSet = ffmpegData;
+      }, null, () => {
+        this.loading = false;
+      }
+    );
   }
 }
