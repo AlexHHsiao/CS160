@@ -24,8 +24,6 @@
   width: 70%;
   padding: 10px;
   font-size: large;
-  position: absolute;
-  top: 0;
 }
 
 .member-group {
@@ -89,4 +87,19 @@ img {
   font-size: large;
   text-align: left;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 840px) {
+  .member {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .group-info {
+    width: 100%;
+  }
+
+  .sjsu {
+    display: none;
+  }
 }

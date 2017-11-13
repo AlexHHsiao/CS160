@@ -10,3 +10,9 @@
   margin-bottom: 70px;
   display: table;
 }
+
+@media only screen and (max-width: 840px) {
+  .body {
+    width: 100%;
+  }
+}

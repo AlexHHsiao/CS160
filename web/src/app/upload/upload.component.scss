@@ -96,3 +96,13 @@
     object-fit: contain;
   }
 }
+
+@media only screen and (max-width: 840px) {
+  .command-container {
+    width: 100%;
+  }
+
+  .operate-container {
+    width: 100%;
+  }
+}
