@@ -119,6 +119,9 @@ export class HeaderComponent implements OnInit {
 
   handleFile(event) {
     this.file = event.target.files;
-    this.uploadTitle = event.target.files[0].name;
+
+    if (this.file.length !== 0) {
+      this.uploadTitle = event.target.files[0].name;
+    }
   }
 }

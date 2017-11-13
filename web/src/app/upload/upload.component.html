@@ -44,7 +44,7 @@
         <input id="file-upload" name='upload_cont_img' type="file" style="display:none;" (change)="handleFile($event)" accept="video/mp4">
       </form>
 
-      <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file || upload?.progress === 100">
+      <button class="btn btn-primary" (click)="onUpload()" [disabled]="!readyUpload">
         Upload
       </button>
     </div>
@@ -64,7 +64,7 @@
   <div class="command-container">
     <div class="command">
 
-      <div *ngIf="upload">
+      <div *ngIf="uploadStart">
         <div class="progress">
           <div class="progress-bar progress-bar-success progress-bar-animated progress-bar-striped active"
                [ngStyle]="{ 'width': upload?.progress + '%' }">{{upload?.progress}} %

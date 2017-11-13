@@ -18,6 +18,8 @@ export class UploadComponent implements OnInit {
   loading: boolean;
   fileName: string;
   resultUrl: string;
+  readyUpload: boolean;
+  uploadStart: boolean;
 
   dataSet: any;
 
@@ -27,6 +29,8 @@ export class UploadComponent implements OnInit {
     this.loading = true;
     this.dataSet = null;
     this.resultUrl = '';
+    this.uploadStart = false;
+    this.readyUpload = false;
   }
 
   ngOnInit() {
@@ -43,19 +47,22 @@ export class UploadComponent implements OnInit {
     this.uploadService.uploadFile(this.upload);
 
     this.uploadTitle = 'Choose Video';
+    this.readyUpload = false;
     this.loading = false;
     this.fileName = newFile.name;
     this.dataSet = null;
+    this.uploadStart = true;
+    this.resultUrl = '';
   }
 
   handleFile(event) {
-
     this.file = event.target.files;
 
     if (this.file.length !== 0) {
-      this.uploadTitle = this.file[0].name
+      this.uploadTitle = this.file[0].name;
+      this.readyUpload = true;
     } else {
-      this.file = null;
+      this.readyUpload = false;
       this.uploadTitle = 'Choose Video';
     }
   }
@@ -63,8 +70,8 @@ export class UploadComponent implements OnInit {
   extractFrame() {
 
     this.loading = true;
+    this.uploadStart = false;
     this.upload = null;
-    this.file = null;
 
     let ffmpegData;
 
