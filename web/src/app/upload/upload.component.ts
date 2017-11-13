@@ -23,7 +23,7 @@ export class UploadComponent implements OnInit {
 
   constructor(private uploadService: UploadService, private authService: AuthService,
               private serverService: ServerService) {
-    this.uploadTitle = 'Upload Video';
+    this.uploadTitle = 'Choose Video';
     this.loading = true;
     this.dataSet = null;
     this.resultUrl = '';
@@ -42,7 +42,7 @@ export class UploadComponent implements OnInit {
     this.upload = new UploadModel(newFile);
     this.uploadService.uploadFile(this.upload);
 
-    this.uploadTitle = 'Upload Video';
+    this.uploadTitle = 'Choose Video';
     this.loading = false;
     this.fileName = newFile.name;
     this.dataSet = null;
@@ -56,7 +56,7 @@ export class UploadComponent implements OnInit {
       this.uploadTitle = this.file[0].name
     } else {
       this.file = null;
-      this.uploadTitle = 'Upload Video';
+      this.uploadTitle = 'Choose Video';
     }
   }
 
@@ -68,24 +68,24 @@ export class UploadComponent implements OnInit {
 
     let ffmpegData;
 
-    // this.uploadService.getFile(this.authService.getEmail()).then((data) => {
-    //   ffmpegData = data;
-    //   this.resultUrl = ffmpegData;
-    //   this.loading = false;
-    // });
+    this.uploadService.getFile(this.authService.getEmail()).then((data) => {
+      ffmpegData = data;
+      this.resultUrl = ffmpegData;
+    });
 
-    // setTimeout(() => {
-    //   console.log(this.resultUrl);
-    // }, 3000);
+    setTimeout(() => {
+      console.log(this.resultUrl);
+      this.loading = false;
+    }, 3000);
 
-    this.serverService.extractFrame(this.fileName).subscribe(
-      (data) => {
-        console.log(data.json());
-        ffmpegData = data.json();
-        this.dataSet = ffmpegData;
-      }, null, () => {
-        this.loading = false;
-      }
-    );
+    // this.serverService.extractFrame(this.fileName).subscribe(
+    //   (data) => {
+    //     console.log(data.json());
+    //     ffmpegData = data.json();
+    //     this.dataSet = ffmpegData;
+    //   }, null, () => {
+    //     this.loading = false;
+    //   }
+    // );
   }
 }

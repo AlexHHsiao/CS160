@@ -56,7 +56,6 @@
   padding: 10px;
   float: right;
   min-height: 300px;
-  max-height: 500px;
   background-color: whitesmoke;
   overflow: auto;
 }
@@ -92,8 +91,7 @@
   display: table;
 
   video {
-    height: 100%;
-    width: 100%;
+    max-height: 500px;
     -o-object-fit: contain;
     object-fit: contain;
   }

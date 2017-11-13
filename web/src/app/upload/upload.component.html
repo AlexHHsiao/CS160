@@ -7,20 +7,25 @@
 
   <ul>
     <li>
-      You have to upload a video in order to get processed. Be sure that the video contains faces. Otherwise
-      we will not able to recognize faces.
+      You have to upload a video in order to get processed. Be sure that the video contains faces. At this moment,
+      we only accept mp4 format for video.
     </li>
 
     <li>
-      After asdfsfasfjasdkfjask
+      The process button will be enabled after the video is uploaded successfully.
     </li>
 
     <li>
-      After asdfsfasfjasdkfjask
+      By clicking the process button, our backend will first download the video that user upload. Then
+      ffmpeg will be applied to extract frames based on the fps of the video. After extracting, both dlib and
+      eyelike libraries will be applied to draw face and eye. In the end, ffmpeg will be applied again to
+      collect all frames and generate a new video with the initial fps.
     </li>
 
     <li>
-      After asdfsfasfjasdkfjask
+      After the new video is generated, it will be uploaded to our Firebase stroage and our backend will return
+      a response with the fps, video name, total frames extracted, and url to frontend.
+      In the end, the video will be display with the given url.
     </li>
 
   </ul>
@@ -72,9 +77,9 @@
         </span>
       </div>
 
-      <div class="extractFrame" *ngIf="!loading && dataSet !== null">
+      <div class="extractFrame" *ngIf="!loading && resultUrl !== ''">
         <video controls autoplay>
-          <source [src]="dataSet.url" type="video/mp4">
+          <source [src]="resultUrl" type="video/mp4">
         </video>
       </div>
 

@@ -49,6 +49,8 @@ export class InformationComponent implements OnInit {
       window.open('https://www.linkedin.com/in/alex-xiao-603986b7/');
     } else if (name === 'yan') {
       window.open('https://www.linkedin.com/in/yizhou-yan/');
+    } else if (name === 'tien') {
+      window.open('https://www.linkedin.com/in/tien-tran-6898387b/');
     }
   }
 }

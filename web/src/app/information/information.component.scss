@@ -46,7 +46,9 @@
   position: relative;
   background-color: whitesmoke;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: 1s;
+  -webkit-transition: 1s;
 }
 
 .member:hover {
@@ -55,17 +57,25 @@
 
 .mem-info {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   padding-left: 3px;
   padding-right: 3px;
+  height: 100%;
+  width: 100%;
 }
 
 .mem-img {
   transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   position: absolute;
   width: 80%;
+  height: 80%;
   left: 10%;
+  top: 10%;
 }
 
 img {
