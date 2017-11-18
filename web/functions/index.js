@@ -203,10 +203,11 @@ exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
   }).then(() => {
     console.log('generate video');
 
-    return spawn('ffmpeg', ['-r', fps.toString(), '-start_number', '1', '-f', 'image2', '-i',
+    return spawn(ffmpegPath, ['-r', fps.toString(), '-start_number', '1', '-f', 'image2', '-i',
       eyePath + '/' + username + '%d_finished.jpg', '-c:v', 'libx264', finalDir + '/' + videoEdit]);
   }).then(() => {
     // upload video to cloud storage
+    console.log('uploading video');
     return sourceBucket.upload(finalDir + '/' + videoEdit, {destination: cloudResultPath + '/' + videoEdit});
   }).then(() => {
     let file = sourceBucket.file(cloudResultPath + '/' + videoEdit);

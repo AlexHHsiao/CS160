@@ -83,7 +83,7 @@ export class UploadComponent implements OnInit {
     setTimeout(() => {
       console.log(this.resultUrl);
       this.loading = false;
-    }, 3000);
+    }, 90000);
 
     // this.serverService.extractFrame(this.fileName).subscribe(
     //   (data) => {
