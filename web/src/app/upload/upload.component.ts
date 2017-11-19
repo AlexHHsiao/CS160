@@ -75,15 +75,16 @@ export class UploadComponent implements OnInit {
 
     let ffmpegData;
 
-    this.uploadService.getFile(this.authService.getEmail()).then((data) => {
-      ffmpegData = data;
-      this.resultUrl = ffmpegData;
-    });
+    //this.serverService.extractFrame(this.fileName);
 
     setTimeout(() => {
+      this.uploadService.getFile(this.authService.getEmail()).then((data) => {
+        ffmpegData = data;
+        this.resultUrl = ffmpegData;
+      });
       console.log(this.resultUrl);
       this.loading = false;
-    }, 90000);
+    }, 60000);
 
     // this.serverService.extractFrame(this.fileName).subscribe(
     //   (data) => {
