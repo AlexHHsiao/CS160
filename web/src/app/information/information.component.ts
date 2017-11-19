@@ -10,11 +10,16 @@ export class InformationComponent implements OnInit {
   animation1: string;
   animation2: string;
   animation3: string;
+  animation4: string;
+  animation5: string;
 
   constructor() {
     this.animation1 = 'rotateY(0deg)';
     this.animation2 = 'rotateY(0deg)';
     this.animation3 = 'rotateY(0deg)';
+    this.animation4 = 'rotateY(0deg)';
+    this.animation5 = 'rotateY(0deg)';
+
   }
 
   ngOnInit() {
@@ -39,6 +44,18 @@ export class InformationComponent implements OnInit {
       } else {
         this.animation3 = 'rotateY(0deg)';
       }
+    } else if (index === 4) {
+      if (this.animation4 === 'rotateY(0deg)') {
+        this.animation4 = 'rotateY(180deg)';
+      } else {
+        this.animation4 = 'rotateY(0deg)';
+      }
+    } else if (index === 5) {
+      if (this.animation5 === 'rotateY(0deg)') {
+        this.animation5 = 'rotateY(180deg)';
+      } else {
+        this.animation5 = 'rotateY(0deg)';
+      }
     }
   }
 
@@ -50,6 +67,10 @@ export class InformationComponent implements OnInit {
     } else if (name === 'yan') {
       window.open('https://www.linkedin.com/in/yizhou-yan/');
     } else if (name === 'tien') {
+      window.open('https://www.linkedin.com/in/tien-tran-6898387b/');
+    } else if (name === 'Mor') {
+      window.open('https://www.linkedin.com/in/bluegummyotter/');
+    } else if (name === 'matt') {
       window.open('https://www.linkedin.com/in/tien-tran-6898387b/');
     }
   }
