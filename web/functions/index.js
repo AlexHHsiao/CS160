@@ -187,6 +187,7 @@ exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
     return spawn(ffmpegPath, ['-i', temDir + '/' + name, framePath + '/' + username + '%d.jpg']);
   }).then(() => {
     // detect eye
+    res.send('HAHAHAH');
     console.log('eye track');
     return exec('/home/yizhou/CS160/modified_eyeLike/build/bin/./eyeLike');
 
@@ -195,7 +196,6 @@ exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
     const frames = fs.readdirSync(framePath);
     total_frame = frames.length;
 
-    res.send('HAHAHAH');
     return spawn('python', ['/home/yizhou/CS160/dlib-19.1/python_examples/drawFace.py',
       '/home/yizhou/CS160/dlib-19.1/python_examples/shape_predictor_68_face_landmarks.dat',
       '/home/yizhou/CS160/dlib-19.1/python_examples/frame_eye/']);

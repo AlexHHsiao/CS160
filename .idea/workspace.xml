@@ -21,14 +21,10 @@
       <file leaf-file-name="upload.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/src/app/upload/upload.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+            <state relative-caret-position="635">
+              <caret line="81" column="53" lean-forward="true" selection-start-line="81" selection-start-column="53" selection-end-line="81" selection-end-column="53" />
               <folding>
-                <marker date="1511045113702" expanded="true" signature="2730:2767" ph="..." />
-                <marker date="1511045113702" expanded="true" signature="2730:2780" ph="..." />
-                <marker date="1511045113702" expanded="true" signature="2730:2901" ph="..." />
-                <marker date="1511045113702" expanded="true" signature="2730:2910" ph="..." />
-                <marker date="1511045113702" expanded="true" signature="2730:2917" ph="..." />
+                <marker date="1511906393775" expanded="true" signature="2732:2767" ph="..." />
               </folding>
             </state>
           </provider>
@@ -37,7 +33,7 @@
       <file leaf-file-name="upload.component.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/src/app/upload/upload.component.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1782">
+            <state relative-caret-position="1926">
               <caret line="107" column="1" lean-forward="false" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
               <folding>
                 <marker date="1511045113702" expanded="true" signature="736:878" ph="{...}" />
@@ -46,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="upload.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/src/app/upload/upload.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="599">
+              <caret line="86" column="8" lean-forward="false" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -58,11 +54,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="upload.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/app/service/upload.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/app/service/server.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="33" column="3" lean-forward="false" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/functions/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="803">
-              <caret line="237" column="3" lean-forward="true" selection-start-line="237" selection-start-column="3" selection-end-line="237" selection-end-column="3" />
+            <state relative-caret-position="209">
+              <caret line="206" column="100" lean-forward="true" selection-start-line="206" selection-start-column="100" selection-end-line="206" selection-end-column="100" />
               <folding />
             </state>
           </provider>
@@ -131,10 +149,10 @@
         <option value="$PROJECT_DIR$/web/src/app/header/header.component.scss" />
         <option value="$PROJECT_DIR$/web/src/app/main/main.component.html" />
         <option value="$PROJECT_DIR$/web/src/app/main/main.component.scss" />
-        <option value="$PROJECT_DIR$/web/src/app/upload/upload.component.html" />
         <option value="$PROJECT_DIR$/web/functions/frame-extract.js" />
-        <option value="$PROJECT_DIR$/web/functions/index.js" />
         <option value="$PROJECT_DIR$/web/src/app/upload/upload.component.ts" />
+        <option value="$PROJECT_DIR$/web/functions/index.js" />
+        <option value="$PROJECT_DIR$/web/src/app/upload/upload.component.html" />
       </list>
     </option>
   </component>
@@ -190,8 +208,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -237,6 +253,14 @@
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS160" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS160" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="upload" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -258,6 +282,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -310,12 +336,13 @@
       <workItem from="1510262703943" duration="3796000" />
       <workItem from="1510268223307" duration="1719000" />
       <workItem from="1510269961424" duration="1170000" />
-      <workItem from="1511045236688" duration="1303000" />
+      <workItem from="1511045236688" duration="1341000" />
+      <workItem from="1511901946039" duration="3978000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44824000" />
+    <option name="totallyTimeSpent" value="48840000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1857" height="1092" extended-state="6" />
@@ -351,14 +378,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/functions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3222">
-          <caret line="179" column="17" lean-forward="true" selection-start-line="179" selection-start-column="17" selection-end-line="179" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/src/app/upload/upload.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
@@ -374,11 +393,7 @@
         <state relative-caret-position="630">
           <caret line="35" column="89" lean-forward="false" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="89" />
           <folding>
-            <marker date="1511045113702" expanded="true" signature="2730:2767" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2780" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2901" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2910" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2917" ph="..." />
+            <marker date="1511906393775" expanded="true" signature="2732:2767" ph="..." />
           </folding>
         </state>
       </provider>
@@ -430,11 +445,7 @@
         <state relative-caret-position="1494">
           <caret line="83" column="12" lean-forward="false" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
           <folding>
-            <marker date="1511045113702" expanded="true" signature="2730:2767" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2780" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2901" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2910" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2917" ph="..." />
+            <marker date="1511906393775" expanded="true" signature="2732:2767" ph="..." />
           </folding>
         </state>
       </provider>
@@ -472,11 +483,7 @@
         <state relative-caret-position="1494">
           <caret line="83" column="12" lean-forward="false" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
           <folding>
-            <marker date="1511045113702" expanded="true" signature="2730:2767" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2780" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2901" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2910" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2917" ph="..." />
+            <marker date="1511906393775" expanded="true" signature="2732:2767" ph="..." />
           </folding>
         </state>
       </provider>
@@ -514,11 +521,7 @@
         <state relative-caret-position="1116">
           <caret line="62" column="30" lean-forward="false" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
           <folding>
-            <marker date="1511045113702" expanded="true" signature="2730:2767" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2780" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2901" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2910" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2917" ph="..." />
+            <marker date="1511906393775" expanded="true" signature="2732:2767" ph="..." />
           </folding>
         </state>
       </provider>
@@ -556,11 +559,7 @@
         <state relative-caret-position="1116">
           <caret line="62" column="30" lean-forward="true" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
           <folding>
-            <marker date="1511045113702" expanded="true" signature="2730:2767" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2780" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2901" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2910" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2917" ph="..." />
+            <marker date="1511906393775" expanded="true" signature="2732:2767" ph="..." />
           </folding>
         </state>
       </provider>
@@ -598,11 +597,7 @@
         <state relative-caret-position="1422">
           <caret line="79" column="113" lean-forward="true" selection-start-line="79" selection-start-column="113" selection-end-line="79" selection-end-column="113" />
           <folding>
-            <marker date="1511045113702" expanded="true" signature="2730:2767" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2780" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2901" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2910" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2917" ph="..." />
+            <marker date="1511906393775" expanded="true" signature="2732:2767" ph="..." />
           </folding>
         </state>
       </provider>
@@ -667,11 +662,7 @@
         <state relative-caret-position="1350">
           <caret line="75" column="12" lean-forward="true" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
           <folding>
-            <marker date="1511045113702" expanded="true" signature="2730:2767" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2780" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2901" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2910" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2917" ph="..." />
+            <marker date="1511906393775" expanded="true" signature="2732:2767" ph="..." />
           </folding>
         </state>
       </provider>
@@ -680,13 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/app/service/server.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="33" column="3" lean-forward="false" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -742,7 +726,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/app/upload/upload.component.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1782">
+        <state relative-caret-position="1926">
           <caret line="107" column="1" lean-forward="false" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
           <folding>
             <marker date="1511045113702" expanded="true" signature="736:878" ph="{...}" />
@@ -774,20 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/app/upload/upload.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
-          <folding>
-            <marker date="1511045113702" expanded="true" signature="2730:2767" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2780" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2901" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2910" ph="..." />
-            <marker date="1511045113702" expanded="true" signature="2730:2917" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/functions/frame-extract.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -801,21 +771,49 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/functions/index.js">
+    <entry file="file://$PROJECT_DIR$/web/src/app/service/upload.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="803">
-          <caret line="237" column="3" lean-forward="true" selection-start-line="237" selection-start-column="3" selection-end-line="237" selection-end-column="3" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/app/service/server.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="33" column="3" lean-forward="false" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/app/upload/upload.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="599">
+          <caret line="86" column="8" lean-forward="false" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/app/upload/upload.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="635">
+          <caret line="81" column="53" lean-forward="true" selection-start-line="81" selection-start-column="53" selection-end-line="81" selection-end-column="53" />
+          <folding>
+            <marker date="1511906393775" expanded="true" signature="2732:2767" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/functions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="206" column="100" lean-forward="true" selection-start-line="206" selection-start-column="100" selection-end-line="206" selection-end-column="100" />
+          <folding />
         </state>
       </provider>
     </entry>

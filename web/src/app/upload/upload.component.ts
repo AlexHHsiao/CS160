@@ -75,7 +75,7 @@ export class UploadComponent implements OnInit {
 
     let ffmpegData;
 
-    //this.serverService.extractFrame(this.fileName);
+    this.serverService.extractFrame(this.fileName).subscribe();
 
     setTimeout(() => {
       this.uploadService.getFile(this.authService.getEmail()).then((data) => {
@@ -84,7 +84,7 @@ export class UploadComponent implements OnInit {
       });
       console.log(this.resultUrl);
       this.loading = false;
-    }, 60000);
+    }, 80000);
 
     // this.serverService.extractFrame(this.fileName).subscribe(
     //   (data) => {
