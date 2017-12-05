@@ -1,0 +1,98 @@
+<div class="navbar-container">
+  <div class="navbar-content">
+
+    <div class="icon">
+      <img src='../../assets/img/icon.png'>
+    </div>
+
+    <div class="navbar-header">
+      <a class="navbar-brand" (click)="goto('home')" style="cursor: pointer">CS 160 Team <b><i>Faceless</i></b></a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right header-btn-ul">
+      <ng-template [ngIf]="!authService.isAuth()">
+        <li class="header-btn-li">
+          <button class="btn-primary btn" (click)="register()">Register</button>
+        </li>
+        <li class="header-btn-li">
+          <button class="btn-primary btn" (click)="signin()">Sign In</button>
+        </li>
+      </ng-template>
+
+      <li class="profile" *ngIf="authService.isAuth()"><img [src]="authService.getPhoto()"></li>
+
+      <li class="dropdown" appDropdown *ngIf="authService.isAuth()" style="height: 100%">
+        <a style="cursor: pointer; line-height: 40px; font-size: x-large;" class="dropdown-toggle" role="button">{{authService.getUsername()| shorten: 10}}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" style="z-index: 2">
+          <li><a style="cursor: pointer;" (click)="nameChange = true;">Change Username</a></li>
+          <li><a style="cursor: pointer;" (click)="proImgChange = true;">Change Profile Image</a></li>
+          <li><a style="cursor: pointer;" (click)="logout()">Log Out</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+<div class="menu-container">
+  <ul class="menu">
+    <li (click)="goto('home')" [ngStyle]="{'border-bottom': homeBottom, 'line-height': homeLine}">Home</li>
+    <li (click)="goto('ana')" [ngStyle]="{'border-bottom': anaBottom, 'line-height': anaLine}"
+        *ngIf="authService.isAuth()">
+      Analysis
+    </li>
+    <li (click)="goto('info')" [ngStyle]="{'border-bottom': infoBottom, 'line-height': infoLine}">Who We Are</li>
+  </ul>
+</div>
+
+<div *ngIf='nameChange' class='name-modal'>
+  <div class="name-box">
+    <div class="modal-header">
+      <span class="text-info">Please Give us Your Name</span>
+    </div>
+
+    <input type="text" name="username" class="form-control" [(ngModel)]="username">
+
+    <div class="btn-list">
+      <button class="btn btn-danger" (click)="nameChange = false">Cancel</button>
+      <button class="btn btn-primary" (click)="changeUsername()" [disabled]="username === ''">Submit</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf='proImgChange' class='name-modal'>
+  <div class="name-box" style="height: 250px">
+    <div class="modal-header">
+      <span class="text-info">Please Upload Profile Image</span>
+    </div>
+
+    <div *ngIf="upload">
+      <div class="progress">
+        <div class="progress-bar progress-bar-success progress-bar-animated progress-bar-striped active"
+             [ngStyle]="{ 'width': upload?.progress + '%' }">{{upload?.progress}} %
+        </div>
+      </div>
+    </div>
+
+    <span class="help-block" *ngIf="upload?.progress === 100"
+          style="background-color: cornflowerblue; color: white; text-align: center;
+          border-radius: 5px; margin-left: 10px; margin-right: 10px">
+      Profile Image Has Been Changed!!!
+    </span>
+
+    <form style="margin-top: 10px; margin-bottom: 10px;">
+      <label for="file-upload" class="custom-file-upload" (change)="handleFile($event)">
+        {{uploadTitle}}
+      </label>
+      <input id="file-upload" name='upload_cont_img' type="file" style="display:none;" (change)="handleFile($event)" accept="image/*">
+    </form>
+
+    <div class="btn-list">
+      <button class="btn btn-danger" (click)="proImgChange = false; file = null; uploadTitle = 'Upload Profile Photo'; upload = null;">Cancel</button>
+      <button class="btn btn-primary" (click)="onUpload()" [disabled]="!file || upload?.progress === 100">
+        Upload</button>
+    </div>
+  </div>
+</div>

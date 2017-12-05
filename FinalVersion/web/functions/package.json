@@ -1,0 +1,17 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.13",
+    "@ffprobe-installer/ffprobe": "^1.0.8",
+    "@google-cloud/storage": "^1.4.0",
+    "child-process-promise": "^2.2.1",
+    "ffmpeg": "0.0.4",
+    "firebase-admin": "~5.2.1",
+    "firebase-functions": "^0.6.3",
+    "fluent-ffmpeg": "^2.1.2",
+    "install": "^0.10.1",
+    "npm": "^5.4.2"
+  },
+  "private": true
+}

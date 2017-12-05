@@ -1,0 +1,112 @@
+.title {
+  width: 100%;
+  text-align:  center;
+  font-size: xx-large;
+  color: tomato;
+  font-family: "Comic Sans MS";
+  margin-bottom: 20px;
+}
+
+.intro {
+  display: table;
+  width: 100%;
+  position: relative;
+}
+
+.sjsu {
+  display: inline-table;
+  width: 30%;
+  border: solid 1px lightgrey;
+  padding: 10px;
+}
+.group-info {
+  display: inline-block;
+  width: 70%;
+  padding: 10px;
+  font-size: large;
+  font-style: italic;
+}
+
+.member-group {
+  margin-top: 20px;
+  display: table;
+  width: 100%;
+}
+
+.member {
+  border: solid 1px lightgrey;
+  display: inline-table;
+  width: 30%;
+  padding: 10px;
+  margin-right: 1.5%;
+  margin-left: 1.5%;
+  cursor: pointer;
+  height: 300px;
+  position: relative;
+  background-color: whitesmoke;
+  margin-bottom: 20px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: 1s;
+  -webkit-transition: 1s;
+}
+
+.member:hover {
+  background-color: lightgrey;
+}
+
+.mem-info {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding-left: 3px;
+  padding-right: 3px;
+  height: 100%;
+  width: 100%;
+}
+
+.mem-img {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  left: 10%;
+  top: 10%;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.name {
+  font-size: large;
+  text-align: left;
+  font-weight: bold;
+}
+
+.info {
+  font-size: medium;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media only screen and (max-width: 840px) {
+  .member {
+    width: 100%;
+  }
+
+  .group-info {
+    width: 100%;
+  }
+
+  .sjsu {
+    display: none;
+  }
+}

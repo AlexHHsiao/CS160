@@ -1,0 +1,91 @@
+<div class="instruction">
+  <div class="ins-header">
+    <img src='../../assets/img/manual.png'>
+
+    <span>Instruction</span>
+  </div>
+
+  <ul>
+    <li>
+      You have to upload a video in order to get processed. Be sure that the video contains faces. At this moment,
+      we only accept mp4 format for video.
+    </li>
+
+    <li>
+      The process button will be enabled after the video is uploaded successfully.
+    </li>
+
+    <li>
+      By clicking the process button, our backend will first download the video that user upload. Then
+      ffmpeg will be applied to extract frames based on the fps of the video. After extracting, both dlib and
+      eyelike libraries will be applied to draw face and eye. In the end, ffmpeg will be applied again to
+      collect all frames and generate a new video with the initial fps.
+    </li>
+
+    <li>
+      After the new video is generated, it will be uploaded to our Firebase stroage and our backend will return
+      a response with the fps, video name, total frames extracted, and url to frontend.
+      In the end, the video will be display with the given url.
+    </li>
+
+  </ul>
+</div>
+
+<div class="body">
+  <div class="operate-container">
+
+    <div class="group">
+      <span>Please Upload Video Here!</span>
+
+      <form style="margin: 10px">
+        <label for="file-upload" class="custom-file-upload" (change)="handleFile($event)">
+          {{uploadTitle| shorten: 30}}
+        </label>
+        <input id="file-upload" name='upload_cont_img' type="file" style="display:none;" (change)="handleFile($event)" accept="video/mp4">
+      </form>
+
+      <button class="btn btn-primary" (click)="onUpload()" [disabled]="!readyUpload">
+        Upload
+      </button>
+    </div>
+
+    <div class="group">
+      <span>
+        Click button to generate a video with face detected!!
+      </span>
+
+      <button class="btn-primary btn" (click)="extractFrame()"
+              [disabled]="upload?.progress !== 100">
+        Process
+      </button>
+    </div>
+  </div>
+
+  <div class="command-container">
+    <div class="command">
+
+      <div *ngIf="uploadStart">
+        <div class="progress">
+          <div class="progress-bar progress-bar-success progress-bar-animated progress-bar-striped active"
+               [ngStyle]="{ 'width': upload?.progress + '%' }">{{upload?.progress}} %
+          </div>
+        </div>
+
+        <span class="help-block" *ngIf="upload?.progress === 100"
+              style="background-color: cornflowerblue; color: white; text-align: center; border-radius: 5px;">
+          Upload Completed!!!
+        </span>
+      </div>
+
+      <div class="extractFrame" *ngIf="!loading && dataset !== null">
+        <video controls autoplay>
+          <source [src]="dataset.url" type="video/mp4">
+        </video>
+      </div>
+
+      <img *ngIf="loading" class="img-responsive" src="./../../assets/img/loading.gif" style="margin: auto">
+    </div>
+  </div>
+</div>
+
+

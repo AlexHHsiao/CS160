@@ -1,0 +1,207 @@
+.navbar-container {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: lightcyan;
+  height: 70px;
+  border-bottom: 1px solid lightgray;
+  position: fixed;
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+  top: 0;
+  z-index: 2;
+}
+
+.menu-container {
+  height: 40px;
+  background-color: lightgray;
+  margin-bottom: 20px;
+  width: 100%;
+  -webkit-padding-start: 0;
+  position: fixed;
+  top: 72px;
+  z-index: 1;
+}
+
+.menu {
+  list-style: none;
+  height: 100%;
+  text-align: center;
+
+  li {
+    height: 100%;
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 40px;
+    font-family: "Comic Sans MS";
+    font-size: medium;
+    margin: 0;
+  }
+
+  li:hover {
+    background-color: gray;
+    color: white;
+  }
+}
+
+.navbar-content {
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 100%;
+}
+
+.header-btn-ul {
+  height: 100%;
+  margin-right: 0;
+
+  .header-btn-li {
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 20px;
+  }
+}
+
+.profile {
+  margin-top: 10px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  border: black solid 1px;
+
+  img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+  }
+}
+
+.name-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 10;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.name-box {
+  margin-top: 14%;
+  height: 200px;
+  width: 400px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  border: solid 1px darkslategray;
+
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+
+  input {
+    margin-top: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 320px;
+    height: 40px;
+    padding-bottom: 5px;
+  }
+}
+
+.btn-list {
+  border-top: solid 2px lightgrey;
+  margin-top: 10px;
+  margin-right: 10%;
+  margin-left: 10%;
+  position: absolute;
+  width: 80%;
+  bottom: 10px;
+
+  button {
+    float: right;
+    margin-top: 15px;
+    margin-right: 25px;
+  }
+}
+
+.modal-header {
+  padding-top: 10px;
+  text-align: center;
+  margin-right: 30px;
+  margin-left: 30px;
+  border-bottom: solid 2px lightgrey;
+  height: 60px;
+
+  span {
+    font-size: x-large;
+  }
+}
+
+.custom-file-upload {
+  border: 1px solid grey;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+
+  position: absolute;
+  right: 20%;
+  left: 20%;
+  margin: auto;
+  text-align: center;
+  width: auto;
+}
+
+.custom-file-upload:hover {
+  background-color: #039be5;
+  color: white;
+}
+
+.progress {
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.icon {
+  height: 100%;
+  display: inline-block;
+  float: left;
+  margin-left: 20px;
+
+  img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+  }
+}
+
+@-webkit-keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+@media only screen and (max-width: 840px) {
+  .navbar-content {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .navbar-header {
+    display: none;
+  }
+}
