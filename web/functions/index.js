@@ -124,25 +124,15 @@ exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
     }
   });
 
-  // fs.readdir(finalDir, (err, files) => {
-  //   if (err) throw err;
-  //
-  //   for (const file of files) {
-  //     fs.unlink(path.join(finalDir, file), err => {
-  //       if (err) throw err;
-  //     });
-  //   }
-  // });
+  fs.readdir(finalDir, (err, files) => {
+    if (err) throw err;
 
-  // fs.readdir(temDir, (err, files) => {
-  //   if (err) throw err;
-  //
-  //   for (const file of files) {
-  //     fs.unlink(path.join(temDir, file), err => {
-  //       if (err) throw err;
-  //     });
-  //   }
-  // });
+    for (const file of files) {
+      fs.unlink(path.join(finalDir, file), err => {
+        if (err) throw err;
+      });
+    }
+  });
 
   fs.readdir(eyePath, (err, files) => {
     if (err) throw err;
@@ -153,16 +143,6 @@ exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
       });
     }
   });
-
-  // fs.readdir(faceFrame, (err, files) => {
-  //   if (err) throw err;
-  //
-  //   for (const file of files) {
-  //     fs.unlink(path.join(faceFrame, file), err => {
-  //       if (err) throw err;
-  //     });
-  //   }
-  // });
 
   return sourceBucket.file(sessionId + '/' + name).download({
       destination: temDir + '/' + name
@@ -205,12 +185,22 @@ exports.extractFrameLocal = functions.https.onRequest(function (req, res) {
 
     return spawn(ffmpegPath, ['-r', fps.toString(), '-start_number', '1', '-f', 'image2', '-i',
       eyePath + '/' + username + '%d_finished.jpg', '-c:v', 'libx264', finalDir + '/' + videoEdit]);
+
+    // const childProcess = p.childProcess;
+    //
+    // childProcess.stdout.on('data', function (data) {
+    //   console.log('[spawn] stdout: ', data.toString());
+    // });
+    // childProcess.stderr.on('data', function (data) {
+    //   console.log('[spawn] stderr: ', data.toString());
+    // });
+
   }).then(() => {
     // upload video to cloud storage
     console.log('uploading video');
     return sourceBucket.upload(finalDir + '/' + videoEdit, {destination: cloudResultPath + '/' + videoEdit});
   }).then(() => {
-    let file = sourceBucket.file(cloudResultPath + '/' + videoEdit);
+    let file = sourceBucket.file(cloudResultPath + '/' + videoEdit)
 
     return file.getSignedUrl({
       action: 'read',
