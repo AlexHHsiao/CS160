@@ -50,6 +50,7 @@ from skimage import io
 import numpy as np
 import cv2
 import random
+import sqlite3
 
 def rect_to_bb(rect):
     # take a bounding predicted by dlib and convert it
@@ -119,23 +120,38 @@ if len(sys.argv) != 3:
         "    http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2")
     exit()
 
+#setting up variables
 predictor_path = sys.argv[1]
 faces_folder_path = sys.argv[2]
 #Calling the APIs from the libaray, the detector object below is for finding the rectangles around the face.
 detector = dlib.get_frontal_face_detector()
 
+#connect to CS160 db
+
+dbpath = '/home/yizhou/CS160/db/cs160.db'
+conn = sqlite3.connect(dbpath)
+    #open a cursor to perform operattions in db
+c = conn.cursor()
+
+
 #Calling the APIs from the libaray, the predictor object below is for finding the 68 landmarks(points) around the face. It needs a rectangle box around the face as input which could be provided by the detector above.
 predictor = dlib.shape_predictor(predictor_path)
-
 delaunay_color = (255,0,0)
 points_color = (0, 0, 255)
 for f in glob.glob(os.path.join(faces_folder_path, "*.jpg")): 
     print("Processing file: {}".format(f))
+
+    videoName = f[f.rfind('/')+1:]
+    dbPushCmd = 'INSERT INTO FACEDATA VALUES (\'' + videoName + '\', '
+   
+
+
     image = cv2.imread(f)
 
     # Ask the detector to find the bounding boxes of each face. The 1 in the
     # second argument indicates that we should upsample the image 1 time. This
     # will make everything bigger and allow us to detect more faces.    
+    #dets = detector(img, 1)
     dets = detector(image, 1)
     print("Number of faces detected: {}".format(len(dets)))
     for k, d in enumerate(dets):
@@ -144,11 +160,13 @@ for f in glob.glob(os.path.join(faces_folder_path, "*.jpg")):
         subdiv = cv2.Subdiv2D(rect)
         
         allPoints=[]
-	
+    
         shape = predictor(image, d)
         for i in range(0, 68):
             allPoints.append((shape.part(i).x, shape.part(i).y))
-        
+            faceIndex = 'facePoint' + str(i+1)
+            dbPushCmd += '\'' + str(shape.part(i).x) + ', ' + str(shape.part(i).y) + '\', '
+
         # Insert points into subdiv
         for p in allPoints :
             subdiv.insert(p)
@@ -156,7 +174,15 @@ for f in glob.glob(os.path.join(faces_folder_path, "*.jpg")):
         draw_delaunay (image, subdiv, (255,0, 0));
         # Draw points
         for p in allPoints :
-        	draw_point(image, p, (255,0,0))
+            draw_point(image, p, (255,0,0))
     pwd=f[:f.rfind("_")]+"_finished.jpg"
     cv2.imwrite(pwd,image)
+    dbPushCmd = dbPushCmd[:dbPushCmd.rfind(',')]
+    dbPushCmd += (');')
+    c.execute(dbPushCmd)
 
+#MAKE SURE TO RUN ALL DB INTERACTIONS BEFORE CLOSE
+    #commit changes
+conn.commit()
+    #close communications with db
+conn.close()
