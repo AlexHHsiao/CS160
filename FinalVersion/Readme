@@ -1,0 +1,4 @@
+Under db folder is the database used for backend.
+Under Backend/Dlib is the file modified for dlib, and Backend/Eyelike/src is the file modified for eyelike library. We did not modify any code in OpenFace library.
+Under web is code for frontend.
+Under web/functions is the code for backend services (HTTP).
